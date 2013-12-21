@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/GlowNotifier.iml" filepath="$PROJECT_DIR$/GlowNotifier.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GlowNotifierApp/GlowNotifierApp.iml" filepath="$PROJECT_DIR$/GlowNotifierApp/GlowNotifierApp.iml" />
+    </modules>
+  </component>
+</project>
+
