@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">GlowNotifier</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="service_and_info">서비스 설정 및 앱 정보</string>
+    <string name="accessibility">접근성 서비스 설정</string>
+    <string name="appinfo">애플리케이션 정보</string>
+    <string name="app_settings">애플리케이션 설정</string>
+    <string name="color">색상 선택 :</string>
+    <string name="pos">알림빛 위치 선택 :</string>
+
+</resources>

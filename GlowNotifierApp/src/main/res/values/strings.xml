@@ -5,4 +5,11 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <string name="service_and_info">Service Toggle and App info</string>
+    <string name="accessibility">Accessibility Service Settings</string>
+    <string name="appinfo">About the App</string>
+    <string name="app_settings">App Settings</string>
+    <string name="color">Select Color :</string>
+    <string name="pos">Position of Glow :</string>
+
 </resources>
