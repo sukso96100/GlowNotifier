@@ -33,6 +33,19 @@ public class MainActivity extends ActionBarActivity {
         colorentry.setSelection(colorentry_int);
         posentry.setSelection(posentry_int);
 
+        //Launch Tutorial Activity If user new to this app
+        Boolean firstrun = pref.getBoolean("firstrun", true);
+        if (firstrun) {
+            Intent guide = new Intent(MainActivity.this, Tutorial.class);
+            startActivity(guide);
+            SharedPreferences.Editor editor = pref.edit(); // Load Editor
+            editor.putBoolean("firstrun", false); //put value
+            editor.commit(); // Save value
+        }
+        else{
+            //Do Nothing
+        }
+
         TextView accessibility = (TextView)findViewById(R.id.accessibility);
         accessibility.setOnClickListener(new View.OnClickListener() {
             @Override

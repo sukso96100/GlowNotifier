@@ -31,4 +31,13 @@
     <string name="legal">Legal Notices</string>
     <string name="sysnotidetectservice">System Notification Detection Service</string>
     <string name="sysnotidetectservice_desc">GlowNotifier : System Notification Detection Service - Turn this Accessibility Service on to Enable Feature</string>
+    <string name="title_activity_tutorial">Tutorial</string>
+    <string name="tutorial_0">Start</string>
+    <string name="tutorial_0_0">Swipe form Right to continue</string>
+    <string name="tutorial_1">Turning On</string>
+    <string name="tutorial_1_0">Turn the Accessibility On to Enable the Feature</string>
+    <string name="tutorial_2">Customization</string>
+    <string name="tutorial_2_0">You can customize the color, position, more of the Glow</string>
+    <string name="tutorial_done">Done!</string>
+
 </resources>
