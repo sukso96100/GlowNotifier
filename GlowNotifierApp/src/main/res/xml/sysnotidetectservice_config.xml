@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:label="@string/sysnotidetectservice"
+    android:description="@string/sysnotidetectservice_desc"
+    android:canRetrieveWindowContent="true"
+    android:enabled="true"
+    android:exported="false"
+    android:accessibilityFlags="flagDefault"
+    android:accessibilityEventTypes="typeNotificationStateChanged"
+    android:accessibilityFeedbackType="feedbackAllMask"
+    android:notificationTimeout="100"
+    android:packageNames="@null"/>

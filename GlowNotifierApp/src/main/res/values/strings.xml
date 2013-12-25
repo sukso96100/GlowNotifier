@@ -29,4 +29,6 @@
     <string name="src">Get the Full Source Code on GitHub</string>
     <string name="tutorial">Tutorial</string>
     <string name="legal">Legal Notices</string>
+    <string name="sysnotidetectservice">System Notification Detection Service</string>
+    <string name="sysnotidetectservice_desc">GlowNotifier : System Notification Detection Service - Turn this Accessibility Service on to Enable Feature</string>
 </resources>

@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hybdms.glownotifier" >
-
+    package="com.hybdms.glownotifier"
+    android:versionCode="1"
+    android:versionName="0.12.25-beta1-asky" >
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="19" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -57,7 +62,21 @@
                 android:value="com.hybdms.glownotifier.Appinfo" />
         </activity>
 
-    </application>
+        <service
+            android:name="com.hybdms.glownotifier.SysNotiDetectService"
+            android:canRetrieveWindowContent="true"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" >
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
 
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/sysnotidetectservice_config" />
+        </service>
+        <service
+            android:name="com.hybdms.glownotifier.GlowOverlay">
+        </service>
+    </application>
 
 </manifest>
