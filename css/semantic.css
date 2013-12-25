@@ -7005,6 +7005,11 @@ h5.ui.header {
  Content Heading
 ---------------*/
 
+.ui.superhuge.header {
+  min-height: 2em;
+  font-size: 3em;
+}
+
 .ui.huge.header {
   min-height: 1em;
   font-size: 2em;
@@ -9263,6 +9268,13 @@ img.ui.image {
 .ui.huge.image {
   width: 600px;
   font-size: 1.2rem;
+}
+
+.ui.superhuge.images .image,
+.ui.superhuge.images img,
+.ui.superhuge.image {
+  width: 800px;
+  font-size: 1.8rem;
 }
 
 /*******************************
