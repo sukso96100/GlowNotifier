@@ -16,30 +16,25 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape android:shape="rectangle"
-            android:dither="true">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
 
-            <corners android:radius="2dp"/>
 
-            <solid android:color="#ccc" />
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
-        </shape>
-    </item>
+        <TextView
+            android:id="@+id/doc"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            />
 
-    <item android:bottom="2dp">
-        <shape android:shape="rectangle"
-            android:dither="true">
+    </ScrollView>
 
-            <corners android:radius="2dp" />
-
-            <solid android:color="@android:color/white" />
-
-            <padding android:bottom="2dp"
-                android:left="0.5dp"
-                android:right="0.5dp"
-                android:top="0.5dp" />
-        </shape>
-    </item>
-</layer-list>
+</LinearLayout>
