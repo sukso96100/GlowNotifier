@@ -1,6 +1,8 @@
 package com.hybdms.glownotifier;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
@@ -12,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
@@ -20,6 +23,15 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Load Preference Value
+        SharedPreferences pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);
+        Spinner colorentry = (Spinner) findViewById(R.id.colorentry);  //colorentry spinner
+        Spinner posentry = (Spinner) findViewById(R.id.posentry);  //posentry spinner
+        int colorentry_int = pref.getInt("colorentry",0);
+        int posentry_int = pref.getInt("posentry",0);
+        colorentry.setSelection(colorentry_int);
+        posentry.setSelection(posentry_int);
 
         TextView accessibility = (TextView)findViewById(R.id.accessibility);
         accessibility.setOnClickListener(new View.OnClickListener() {
@@ -39,5 +51,21 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+    }
+
+    public void onStop(){
+        super.onStop();
+
+        //Save Preference Value
+        SharedPreferences pref = getSharedPreferences("pref", Activity.MODE_PRIVATE); // Save UI State
+        SharedPreferences.Editor editor = pref.edit(); // Load Editor
+        Spinner colorentry = (Spinner) findViewById(R.id.colorentry);
+        Spinner posentry = (Spinner) findViewById(R.id.posentry);
+        // Input values
+        int colorentry_selected_value = colorentry.getSelectedItemPosition();
+        int posentry_selected_value = posentry.getSelectedItemPosition();
+        editor.putInt("colorentry", colorentry_selected_value);
+        editor.putInt("posentry", posentry_selected_value);
+        editor.commit(); // Save values
     }
 }
