@@ -6,7 +6,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/Theme.Gray" >
         <activity
             android:name="com.hybdms.glownotifier.MainActivity"
             android:label="@string/app_name" >
@@ -16,6 +16,48 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.hybdms.glownotifier.Appinfo"
+            android:label="@string/appinfo"
+            android:parentActivityName="com.hybdms.glownotifier.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hybdms.glownotifier.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.hybdms.glownotifier.Doc_Readme"
+            android:label="@string/appinfo"
+            android:parentActivityName="com.hybdms.glownotifier.Appinfo" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hybdms.glownotifier.Appinfo" />
+        </activity>
+        <activity
+            android:name="com.hybdms.glownotifier.Doc_Contributors"
+            android:label="@string/appinfo"
+            android:parentActivityName="com.hybdms.glownotifier.Appinfo" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hybdms.glownotifier.Appinfo" />
+        </activity>
+        <activity
+            android:name="com.hybdms.glownotifier.Doc_Notices"
+            android:label="@string/appinfo"
+            android:parentActivityName="com.hybdms.glownotifier.Appinfo" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hybdms.glownotifier.Appinfo" />
+        </activity>
+        <activity
+            android:name="com.hybdms.glownotifier.Doc_Copying"
+            android:label="@string/appinfo"
+            android:parentActivityName="com.hybdms.glownotifier.Appinfo" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hybdms.glownotifier.Appinfo" />
+        </activity>
+
     </application>
+
 
 </manifest>

@@ -1,11 +1,16 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.hybdms.glownotifier.MainActivity"
-    android:orientation="vertical"
-    android:layout_margin="10dp">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingBottom="20dp">
 
 
     <TextView
@@ -21,9 +26,9 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/accessibility"
-        android:id="@+id/textView2"
+        android:id="@+id/accessibility"
         android:background="@drawable/cardbg"
-        android:padding="5dp"
+        android:padding="10dp"
         android:layout_marginTop="10dp"/>
 
     <TextView
@@ -31,9 +36,9 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/appinfo"
-        android:id="@+id/textView3"
+        android:id="@+id/appinfo"
         android:background="@drawable/cardbg"
-        android:padding="5dp"
+        android:padding="10dp"
         android:layout_marginTop="10dp"/>
 
     <TextView
@@ -56,9 +61,10 @@
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/spinner"
+        android:id="@+id/colorentry"
+        android:entries="@array/colorentry"
         android:background="@drawable/cardbg"
-        android:padding="5dp"/>
+        android:padding="10dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -71,7 +77,9 @@
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/spinner2"
+        android:id="@+id/posentry"
+        android:entries="@array/posentry"
         android:background="@drawable/cardbg"
-        android:padding="5dp"/>
+        android:padding="10dp"/>
 </LinearLayout>
+    </ScrollView>

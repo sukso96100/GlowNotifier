@@ -12,4 +12,24 @@
     <string name="color">색상 선택 :</string>
     <string name="pos">알림빛 위치 선택 :</string>
 
+    <string-array name="colorentry">
+        <item>빨강색</item>
+        <item>주황색</item>
+        <item>노랑색</item>
+        <item>초록색</item>
+        <item>파랑색</item>
+        <item>남색</item>
+        <item>보라색</item>
+    </string-array>
+
+    <string-array name="posentry">
+        <item>상단</item>
+        <item>하단</item>
+    </string-array>
+
+    <string name="update">Google Play에서 업데이트 확인</string>
+    <string name="src">GitHub에서 소스코드 얻기</string>
+    <string name="tutorial">튜토리얼</string>
+    <string name="legal">법적 고지사항</string>
+
 </resources>
