@@ -9265,6 +9265,13 @@ img.ui.image {
   font-size: 1.2rem;
 }
 
+.ui.superhuge.images .image,
+.ui.superhuge.images img,
+.ui.superhuge.image {
+  width: 1000px;
+  font-size: 2.0rem;
+}
+
 /*******************************
               Groups
 *******************************/
