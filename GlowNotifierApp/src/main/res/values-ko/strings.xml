@@ -59,4 +59,35 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="tutorial_2_0">알림 빛의 색상, 위치 등을 개인화 하실 수 있습니다</string>
     <string name="tutorial_done">끝!</string>
 
+    <string name="width">알림빛 너비 :</string>
+    <string-array name="widthentry">
+        <item>기본값 * 0.3</item>
+        <item>기본값 * 0.4</item>
+        <item>기본값 * 0.5</item>
+        <item>기본값 * 0.6</item>
+        <item>기본값 * 0.7</item>
+        <item>기본값</item>
+        <item>기본값 * 1.25</item>
+        <item>기본값 * 1.5</item>
+        <item>기본값 * 1.75</item>
+        <item>기본값 * 2.0</item>
+        <item>기본값 * 2.25</item>
+    </string-array>
+
+    <string name="height">알림빛 높이 :</string>
+    <string-array name="heightentry">
+        <item>기본값 * 0.3</item>
+        <item>기본값 * 0.4</item>
+        <item>기본값 * 0.5</item>
+        <item>기본값 * 0.6</item>
+        <item>기본값 * 0.7</item>
+        <item>기본값</item>
+        <item>기본값 * 1.25</item>
+        <item>기본값 * 1.5</item>
+        <item>기본값 * 1.75</item>
+        <item>기본값 * 2.0</item>
+        <item>기본값 * 2.25</item>
+    </string-array>
+
+    <string name="visit">GlowNotifier 웹사이트 방</string>
 </resources>

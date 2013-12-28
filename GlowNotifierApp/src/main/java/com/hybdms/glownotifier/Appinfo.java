@@ -56,12 +56,32 @@ public class Appinfo extends ActionBarActivity {
             }
         });
 
+        TextView update = (TextView)findViewById(R.id.update);
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent update = new Intent(Intent.ACTION_VIEW);
+                update.setData(Uri.parse("https://play.google.com/store/apps/details?id=com.hybdms.glownotifier"));
+                startActivity(update);
+            }
+        });
+
         TextView tutorial = (TextView)findViewById(R.id.tutorial);
         tutorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent tutorial = new Intent(Appinfo.this, Tutorial.class);
                 startActivity(tutorial);
+            }
+        });
+
+        TextView visit = (TextView)findViewById(R.id.visit);
+        visit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent visit = new Intent(Intent.ACTION_VIEW);
+                visit.setData(Uri.parse("https://sukso96100.github.io/GlowNotifier"));
+                startActivity(visit);
             }
         });
 

@@ -68,15 +68,25 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         android:padding="10dp"
         android:layout_marginTop="10dp"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/tutorial"
-        android:id="@+id/tutorial"
-        android:background="@drawable/cardbg"
-        android:padding="10dp"
-        android:layout_marginTop="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/tutorial"
+            android:id="@+id/tutorial"
+            android:background="@drawable/cardbg"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/visit"
+            android:id="@+id/visit"
+            android:background="@drawable/cardbg"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"/>
 
     <TextView
         android:layout_marginTop="20dp"

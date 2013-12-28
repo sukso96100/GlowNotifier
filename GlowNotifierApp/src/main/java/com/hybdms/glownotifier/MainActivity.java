@@ -46,10 +46,16 @@ public class MainActivity extends ActionBarActivity {
         SharedPreferences pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);
         Spinner colorentry = (Spinner) findViewById(R.id.colorentry);  //colorentry spinner
         Spinner posentry = (Spinner) findViewById(R.id.posentry);  //posentry spinner
+        Spinner widthentry = (Spinner) findViewById(R.id.widthentry); //widthentry spinner
+        Spinner heightentry = (Spinner) findViewById(R.id.heightentry); //heightentry spinner
         int colorentry_int = pref.getInt("colorentry",0);
         int posentry_int = pref.getInt("posentry",0);
+        int widthentry_int = pref.getInt("widthentry", 5);
+        int heightentry_int = pref.getInt("heightentry", 5);
         colorentry.setSelection(colorentry_int);
         posentry.setSelection(posentry_int);
+        widthentry.setSelection(widthentry_int);
+        heightentry.setSelection(heightentry_int);
 
         //Launch Tutorial Activity If user new to this app
         Boolean firstrun = pref.getBoolean("firstrun", true);
@@ -92,11 +98,18 @@ public class MainActivity extends ActionBarActivity {
         SharedPreferences.Editor editor = pref.edit(); // Load Editor
         Spinner colorentry = (Spinner) findViewById(R.id.colorentry);
         Spinner posentry = (Spinner) findViewById(R.id.posentry);
+        Spinner widthentry = (Spinner) findViewById(R.id.widthentry);
+        Spinner heightentry = (Spinner) findViewById(R.id.heightentry);
         // Input values
         int colorentry_selected_value = colorentry.getSelectedItemPosition();
         int posentry_selected_value = posentry.getSelectedItemPosition();
+        int widthentry_selected_value = widthentry.getSelectedItemPosition();
+        int hedightentry_selected_value = heightentry.getSelectedItemPosition();
+
         editor.putInt("colorentry", colorentry_selected_value);
         editor.putInt("posentry", posentry_selected_value);
+        editor.putInt("widthentry", widthentry_selected_value);
+        editor.putInt("heightentry", hedightentry_selected_value);
         editor.commit(); // Save values
     }
 }

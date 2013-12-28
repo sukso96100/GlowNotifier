@@ -99,5 +99,38 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         android:entries="@array/posentry"
         android:background="@drawable/cardbg"
         android:padding="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/width"
+        android:id="@+id/textView6"
+        android:padding="5dp"
+        android:layout_marginTop="10dp"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/widthentry"
+        android:entries="@array/widthentry"
+        android:background="@drawable/cardbg"
+        android:padding="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/height"
+        android:id="@+id/textView6"
+        android:padding="5dp"
+        android:layout_marginTop="10dp"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/heightentry"
+        android:entries="@array/heightentry"
+        android:background="@drawable/cardbg"
+        android:padding="10dp"/>
+
+
 </LinearLayout>
     </ScrollView>
