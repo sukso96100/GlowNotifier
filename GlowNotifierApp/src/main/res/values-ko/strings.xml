@@ -89,5 +89,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <item>기본값 * 2.25</item>
     </string-array>
 
-    <string name="visit">GlowNotifier 웹사이트 방</string>
+    <string name="visit">GlowNotifier 웹사이트 방문</string>
 </resources>
