@@ -43,6 +43,8 @@
   </div>
             <!--구글플러스 +1 버튼-->
             <a class="item"><div class="g-plusone" data-annotation="inline" data-width="300" data-href="http://sukso96100.github.io/GlowNotifier/"></div></a>
+            <!--페이스북 좋아요 버튼-->
+            <a class="item"><div class="fb-like" data-href="http://sukso96100.github.io/GlowNotifier/" data-width="10em" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div></a>
         </div>
        <!--상단 막대-->
     <div class="ui fixed secondary menu">
@@ -129,6 +131,15 @@
             </div>
         </div>
 
+         <!--페이스북 자바스크립트 SDK-->
+        <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ko_KR/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <!-- 마지막 +1 버튼 태그의 뒤에 이 태그를 배치하세요. -->
 <script type="text/javascript">
   window.___gcfg = {lang: 'ko'};
