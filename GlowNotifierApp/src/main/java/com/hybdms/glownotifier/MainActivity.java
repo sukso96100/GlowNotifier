@@ -26,12 +26,14 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -48,14 +50,17 @@ public class MainActivity extends ActionBarActivity {
         Spinner posentry = (Spinner) findViewById(R.id.posentry);  //posentry spinner
         Spinner widthentry = (Spinner) findViewById(R.id.widthentry); //widthentry spinner
         Spinner heightentry = (Spinner) findViewById(R.id.heightentry); //heightentry spinner
+        EditText glowdleay = (EditText) findViewById(R.id.delaytime); //delaytime Edittext
         int colorentry_int = pref.getInt("colorentry",0);
         int posentry_int = pref.getInt("posentry",0);
         int widthentry_int = pref.getInt("widthentry", 5);
         int heightentry_int = pref.getInt("heightentry", 5);
+        String delaytime_String = pref.getString("delaytime", "5000");
         colorentry.setSelection(colorentry_int);
         posentry.setSelection(posentry_int);
         widthentry.setSelection(widthentry_int);
         heightentry.setSelection(heightentry_int);
+        glowdleay.setText(delaytime_String);
 
         //Launch Tutorial Activity If user new to this app
         Boolean firstrun = pref.getBoolean("firstrun", true);
@@ -100,16 +105,19 @@ public class MainActivity extends ActionBarActivity {
         Spinner posentry = (Spinner) findViewById(R.id.posentry);
         Spinner widthentry = (Spinner) findViewById(R.id.widthentry);
         Spinner heightentry = (Spinner) findViewById(R.id.heightentry);
+        EditText glowdelay = (EditText) findViewById(R.id.delaytime);
         // Input values
         int colorentry_selected_value = colorentry.getSelectedItemPosition();
         int posentry_selected_value = posentry.getSelectedItemPosition();
         int widthentry_selected_value = widthentry.getSelectedItemPosition();
         int hedightentry_selected_value = heightentry.getSelectedItemPosition();
+        String delaytime_edited_value = glowdelay.getText().toString();
 
         editor.putInt("colorentry", colorentry_selected_value);
         editor.putInt("posentry", posentry_selected_value);
         editor.putInt("widthentry", widthentry_selected_value);
         editor.putInt("heightentry", hedightentry_selected_value);
+        editor.putString("delaytime", delaytime_edited_value);
         editor.commit(); // Save values
     }
 }

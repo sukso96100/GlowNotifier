@@ -70,6 +70,7 @@ public class GlowOverlay extends Service {
         int posentry_int = pref.getInt("posentry",0);
         int widthentry_int = pref.getInt("widthentry", 5);
         int heightentry_int = pref.getInt("heightentry", 5);
+        int glowdelay_int = Integer.parseInt(pref.getString("delaytime", "5000"));
 
         //Create Image View
         mGlowOverlay = new ImageView(this);
@@ -240,7 +241,7 @@ public class GlowOverlay extends Service {
         mWindowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         mWindowManager.addView(mGlowOverlay, mParams);
 
-        // Stop this Service in 5 seconds
+        // Stop this Service in a few seconds
         mTask = new TimerTask() {
             @Override
             public void run() {
@@ -248,7 +249,7 @@ public class GlowOverlay extends Service {
             }
         };
         mTimer = new Timer();
-        mTimer.schedule(mTask, 5000);
+        mTimer.schedule(mTask, glowdelay_int);
     }
     @Override
     public void onDestroy() {

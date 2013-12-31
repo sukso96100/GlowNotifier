@@ -131,6 +131,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         android:background="@drawable/cardbg"
         android:padding="10dp"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/glow_delay"
+            android:id="@+id/textView2"
+            android:padding="5dp"
+            android:layout_marginTop="10dp"/>
 
-</LinearLayout>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/delaytime"
+            android:background="@drawable/cardbg"
+            android:padding="10dp"/>
+
+
+    </LinearLayout>
     </ScrollView>
