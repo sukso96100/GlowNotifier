@@ -90,6 +90,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </string-array>
 
     <string name="visit">GlowNotifier 웹사이트 방문</string>
-
+    <string name="blog">개발자 블로그 방문</string>
     <string name="glow_delay">알림빛 지속시간(밀리초 - 기본값 : 5000밀리초(5초)) :</string>
 </resources>

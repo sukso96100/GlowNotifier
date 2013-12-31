@@ -88,7 +88,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </string-array>
 
     <string name="visit">Visit GlowNotifier Website</string>
-
+    <string name="blog">Visit Developer\&apos;\s Blog</string>
     <string name="glow_delay">Glow Delay Time(Milliseconds - default : 5000(5sec)) :</string>
 
 </resources>

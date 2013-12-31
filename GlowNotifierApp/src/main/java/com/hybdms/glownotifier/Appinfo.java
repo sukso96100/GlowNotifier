@@ -85,6 +85,16 @@ public class Appinfo extends ActionBarActivity {
             }
         });
 
+        TextView blog = (TextView)findViewById(R.id.blog);
+        blog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent blog = new Intent(Intent.ACTION_VIEW);
+                blog.setData(Uri.parse("http://hybdms.blogspot.com/"));
+                startActivity(blog);
+            }
+        });
+
         TextView readme = (TextView)findViewById(R.id.readme);
         readme.setOnClickListener(new OnClickListener() {
             @Override
