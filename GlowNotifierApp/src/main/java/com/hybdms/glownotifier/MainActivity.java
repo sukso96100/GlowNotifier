@@ -79,8 +79,14 @@ public class MainActivity extends ActionBarActivity {
         accessibility.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent accessibility = new Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS);
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2){
+                    Intent accessibility = new Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS);
                 startActivity(accessibility);
+                }
+                else{
+                    Intent notiintent = new Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS");
+                    startActivity(notiintent);
+                }
             }
         });
 

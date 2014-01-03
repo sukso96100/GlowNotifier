@@ -23,7 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="action_settings">Settings</string>
 
     <string name="service_and_info">서비스 설정 및 앱 정보</string>
-    <string name="accessibility">접근성 서비스 설정</string>
+    <string name="accessibility">알림 감지 서비스 설정</string>
     <string name="appinfo">애플리케이션 정보</string>
     <string name="app_settings">애플리케이션 설정</string>
     <string name="color">색상 선택 :</string>
@@ -93,7 +93,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="blog">개발자 블로그 방문</string>
     <string name="glow_delay">알림빛 지속시간(밀리초 - 기본값 : 5000밀리초(5초)) :</string>
 
-    <string name="sysnotilistenerservice">시스템 알림 리스너 서비스</string>
-    <string name="sysnotilistenerservice_desc">GlowNotifier : 시스템 알림 리스너 서비스 - 기능을 겨려면 이 서비스를 활성화 하세요.
-        (안드로이드 4.3 젤리빈 이상 버전에서는 이 서비스를 사용하세요.)</string>
+    <string name="sysnotilistenerservice">GlowNotifier : 알림감지</string>
+
 </resources>
