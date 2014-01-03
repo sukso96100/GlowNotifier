@@ -20,7 +20,9 @@ package com.hybdms.glownotifier;
 
 import android.accessibilityservice.AccessibilityService;
 import android.accessibilityservice.AccessibilityServiceInfo;
+import android.app.Notification;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 
@@ -33,9 +35,17 @@ private String DEBUGTAG = "SysNotiDetectService";
         Log.d(DEBUGTAG, "onAccessibilityEvent");
         if (event.getEventType() == AccessibilityEvent.TYPE_NOTIFICATION_STATE_CHANGED) {
             System.out.println("notification: " + event.getText());
-            //Show GlowOverlay
-            Log.d(DEBUGTAG, "Starting GlowOverlay");
-            startService(new Intent(SysNotiDetectService.this, GlowOverlay.class));
+
+            //Filter Toast Out
+            Parcelable parcelable = event.getParcelableData();
+            if (parcelable instanceof Notification) {
+                //Show GlowOverlay
+                Log.d(DEBUGTAG, "Starting GlowOverlay");
+                startService(new Intent(SysNotiDetectService.this, GlowOverlay.class));
+            }
+            else{
+                //Do Nothing
+            }
         }
     }
 
