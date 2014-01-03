@@ -19,6 +19,8 @@
 package com.hybdms.glownotifier;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarActivity;
@@ -72,6 +74,19 @@ public class Tutorial extends ActionBarActivity {
         public int getCount() {
             return 5;
         }
+        private View.OnClickListener mPagerListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2){
+                    Intent accessibility = new Intent(android.provider.Settings.ACTION_ACCESSIBILITY_SETTINGS);
+                    startActivity(accessibility);
+                }
+                else{
+                    Intent notiintent = new Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS");
+                    startActivity(notiintent);
+                }
+            }
+        };
 
         @Override
         public Object instantiateItem(View pager, int position) {
@@ -80,7 +95,13 @@ public class Tutorial extends ActionBarActivity {
                 v = mInflater.inflate(R.layout.tutorial_0, null);
             }
             else if(position == 1){
-                v = mInflater.inflate(R.layout.tutorial_1, null);
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN_MR2){
+                    v = mInflater.inflate(R.layout.tutorial_1_old, null);
+                }
+                else{
+                    v = mInflater.inflate(R.layout.tutorial_1_new, null);
+                }
+                v.findViewById(R.id.button).setOnClickListener(mPagerListener);
             }
             else if(position == 2){
                 v = mInflater.inflate(R.layout.tutorial_2, null);

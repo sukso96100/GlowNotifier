@@ -52,7 +52,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="tutorial_0">Start</string>
     <string name="tutorial_0_0">Swipe form Right to continue</string>
     <string name="tutorial_1">Turning On</string>
-    <string name="tutorial_1_0">Turn the Accessibility On to Enable the Feature</string>
+    <string name="tutorial_1_0">Turn the Service On to Enable the Feature</string>
+    <string name="tutorial_1_1">Turn the Service On</string>
     <string name="tutorial_2">Customization</string>
     <string name="tutorial_2_0">You can customize the color, position, more of the Glow</string>
     <string name="tutorial_done">Done!</string>
@@ -88,8 +89,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </string-array>
 
     <string name="visit">Visit GlowNotifier Website</string>
-    <string name="blog">Visit Developer\&apos;\s Blog</string>
-    <string name="glow_delay">Glow Delay Time(Milliseconds - default : 5000(5sec)) :</string>
+    <string name="blog">Visit Developer\&apos;\ s Blog</string>
+    <string name="glow_delay">Glow Delay Time(Milliseconds-default : 5000(5sec)) :</string>
 
     <string name="sysnotilistenerservice">GlowNotifier : Notification Detector</string>
 

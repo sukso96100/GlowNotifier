@@ -25,17 +25,25 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         android:id="@+id/imageView"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/tutorial_2"
+        android:src="@drawable/notidetect_accessibility"
         android:layout_margin="50dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/tutorial_2_0"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/tutorial_1_0"
         android:id="@+id/textView"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/imageView"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="5dp"
         android:textColor="@android:color/black"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tutorial_1_1"
+        android:id="@+id/button"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

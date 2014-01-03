@@ -54,7 +54,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="tutorial_0">시작</string>
     <string name="tutorial_0_0">계속하려면 오른쪽으로부터 밀기</string>
     <string name="tutorial_1">기능 켜기</string>
-    <string name="tutorial_1_0">접근성 서비스 설정에서 먼저 기능을 켜세요</string>
+    <string name="tutorial_1_0">기능을 사용하려면 아래와 같은 서비스를 켜세요.</string>
+    <string name="tutorial_1_1">서비스 켜기</string>
     <string name="tutorial_2">개인화</string>
     <string name="tutorial_2_0">알림 빛의 색상, 위치 등을 개인화 하실 수 있습니다</string>
     <string name="tutorial_done">끝!</string>
