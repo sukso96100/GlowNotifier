@@ -91,4 +91,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="blog">Visit Developer\&apos;\s Blog</string>
     <string name="glow_delay">Glow Delay Time(Milliseconds - default : 5000(5sec)) :</string>
 
+    <string name="sysnotilistenerservice">System Notification Listener Service</string>
+    <string name="sysnotilistenerservice_desc">GlowNotifier : System Notification Listener Service - Turn this Service on to Enable Feature
+        (if your Android version is 4.3 Jelly Bean or any later versions, use this service.)</string>
+
 </resources>
