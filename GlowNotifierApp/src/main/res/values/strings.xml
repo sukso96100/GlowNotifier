@@ -93,9 +93,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="blog">Visit Developer\'\ s Blog</string>
     <string name="glow_delay">Glow Delay Time(Milliseconds-default : 5000(5sec)) :</string>
     <string name="sysnotilistenerservice">GlowNotifier : Notification Detector</string>
-    <string name="title_activity_blacklist">Blacklist</string>
+    <string name="title_activity_blacklist">Notification Blacklist</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_blacklist__addnew">Blacklist_Addnew</string>
+    <string name="title_activity_blacklist__addnew">Add New</string>
     <string name="db_alreayexist">Already Exist On Blacklist</string>
-    <string name="action_new">Add New</string>
+    <string name="db_removed">Removed from Blacklist</string>
+    <string name="blacklist_info">Glow will not appear for \n
+        blacklisted apps\'\ notification. \n
+        Longclick to remove item from blacklist.</string>
 </resources>

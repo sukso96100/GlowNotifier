@@ -5,15 +5,8 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -30,7 +23,7 @@ public class Blacklist_Addnew extends ActionBarActivity {
         // load list application
         mListAppInfo = (ListView)findViewById(R.id.listView1);
         mHelper = new BlacklistDBhelper(this);
-        mCursor = mHelper.getWritableDatabase().rawQuery("SELECT _ID, appname, pkgname FROM appblacklist ORDER BY pkgname", null);
+        mCursor = mHelper.getWritableDatabase().rawQuery("SELECT _ID, appname, pkgname FROM blacklist ORDER BY pkgname", null);
 
         // create new adapter
         AppInfoAdapter adapter = new AppInfoAdapter(this, Utilities.getInstalledApplication(this), getPackageManager());

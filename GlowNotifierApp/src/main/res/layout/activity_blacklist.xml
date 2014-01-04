@@ -3,8 +3,19 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/blacklist_info"
+        android:id="@+id/textView"
+        android:background="@drawable/cardbg"
+        android:layout_margin="10dp"
+        android:padding="5dp"
+        android:gravity="center"/>
+
     <ListView
-        android:id="@+id/listView1"
+        android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
     </ListView>

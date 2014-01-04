@@ -20,11 +20,11 @@ public class BlacklistDBhelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE blacklist (_id INTEGER PRIMARY KEY AUTOINCREMENT, appname TEXT, pkgname TEXT);");
 
-        ContentValues cv = new ContentValues();
+       // ContentValues cv = new ContentValues();
 
        // cv.put(APPNAME, "GlowNotifier");
        // cv.put(PKGNAME, "com.hybdms.glownotifier");
-        db.insert("blacklist", PKGNAME, cv);
+       // db.insert("blacklist", PKGNAME, cv);
 
     }
 

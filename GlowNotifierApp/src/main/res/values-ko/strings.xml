@@ -97,5 +97,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="sysnotilistenerservice">GlowNotifier : 알림감지</string>
     <string name="db_alreayexist">이미 차단목록에 존재합니다.</string>
     <string name="action_new">새로 추가</string>
+    <string name="title_activity_blacklist">알림 차단 목록</string>
+    <string name="title_activity_blacklist__addnew">새로 추가</string>
+    <string name="db_removed">차단목록에서 제거되었습니다.</string>
+    <string name="blacklist_info">이 목록에 있는 앱의 알림에 대해서는 \n
+        알림빛이 나타나지 않습니다. \n
+        항목을 차단목록에서 지우려면, 길게 누르세요.</string>
 
 </resources>

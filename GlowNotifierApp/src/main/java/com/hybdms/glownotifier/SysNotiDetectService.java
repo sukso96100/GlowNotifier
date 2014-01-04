@@ -22,26 +22,55 @@ import android.accessibilityservice.AccessibilityService;
 import android.accessibilityservice.AccessibilityServiceInfo;
 import android.app.Notification;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Parcelable;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SysNotiDetectService extends AccessibilityService {
 private String DEBUGTAG = "SysNotiDetectService";
+    private BlacklistDBhelper mHelper = null;
+    private Cursor mCursor = null;
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
+
+        // Load BlackList
+        mHelper = new BlacklistDBhelper(this);
+        mCursor = mHelper.getWritableDatabase().rawQuery(
+                "SELECT _ID, pkgname FROM blacklist ORDER BY pkgname", null);
+
+        List<String> array = new ArrayList<String>();
+        while (mCursor.moveToNext()) {
+            String uname = mCursor.getString(mCursor.getColumnIndex("pkgname"));
+            array.add(uname);
+        }
+        mCursor.close();
+        mHelper.close();
+
+        Log.d("DBVALUES", array.toString());
 
         Log.d(DEBUGTAG, "onAccessibilityEvent");
         if (event.getEventType() == AccessibilityEvent.TYPE_NOTIFICATION_STATE_CHANGED) {
             System.out.println("notification: " + event.getText());
 
+            String pkgnameforfilter = event.getPackageName().toString();
+
             //Filter Toast Out
             Parcelable parcelable = event.getParcelableData();
             if (parcelable instanceof Notification) {
+                //Filter Blacklisted Apps' Notifications out
+                if (array.toString().contains(pkgnameforfilter)){
+                    //Do Nothing
+                }
+                else{
                 //Show GlowOverlay
                 Log.d(DEBUGTAG, "Starting GlowOverlay");
                 startService(new Intent(SysNotiDetectService.this, GlowOverlay.class));
+                }
             }
             else{
                 //Do Nothing

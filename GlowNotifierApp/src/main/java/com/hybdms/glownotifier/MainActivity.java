@@ -21,18 +21,12 @@ package com.hybdms.glownotifier;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.text.Editable;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.os.Build;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -97,6 +91,15 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View v) {
                 Intent appinfo = new Intent(MainActivity.this, Appinfo.class);
                 startActivity(appinfo);
+            }
+        });
+
+        TextView blacklist = (TextView)findViewById(R.id.blacklist);
+        blacklist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent blacklist = new Intent(MainActivity.this, Blacklist.class);
+                startActivity(blacklist);
             }
         });
 
