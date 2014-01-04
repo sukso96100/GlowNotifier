@@ -99,6 +99,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="db_alreayexist">Already Exist On Blacklist</string>
     <string name="db_removed">Removed from Blacklist</string>
     <string name="blacklist_info">Glow will not appear for \n
-        blacklisted apps\'\ notification. \n
+        blacklisted apps\'\  notification. \n
         Longclick to remove item from blacklist.</string>
 </resources>
