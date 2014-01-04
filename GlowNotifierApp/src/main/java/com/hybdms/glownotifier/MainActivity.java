@@ -29,6 +29,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -125,5 +126,26 @@ public class MainActivity extends ActionBarActivity {
         editor.putInt("heightentry", hedightentry_selected_value);
         editor.putString("delaytime", delaytime_edited_value);
         editor.commit(); // Save values
+    }
+
+    //ActionBar Action Menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        switch (item.getItemId()) {
+            case R.id.action_preview:
+                startService(new Intent(this, GlowOverlay.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

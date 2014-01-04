@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     <string name="app_name">GlowNotifier</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_preview">미리보기</string>
 
     <string name="service_and_info">서비스 설정 및 앱 정보</string>
     <string name="accessibility">알림 감지 서비스 설정</string>
