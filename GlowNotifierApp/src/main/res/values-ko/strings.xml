@@ -95,5 +95,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="glow_delay">알림빛 지속시간(밀리초 - 기본값 : 5000밀리초(5초)) :</string>
 
     <string name="sysnotilistenerservice">GlowNotifier : 알림감지</string>
+    <string name="db_alreayexist">이미 차단목록에 존재합니다.</string>
+    <string name="action_new">새로 추가</string>
 
 </resources>

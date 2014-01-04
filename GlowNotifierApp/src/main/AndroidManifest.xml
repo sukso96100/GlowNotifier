@@ -104,13 +104,31 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             android:theme="@style/Theme.Gray.NoActionBar" >
         </activity>
 
-        <service android:name="com.hybdms.glownotifier.SysNotificationListenerService"
+        <service
+            android:name="com.hybdms.glownotifier.SysNotificationListenerService"
             android:label="@string/sysnotilistenerservice"
-            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" >
             <intent-filter>
                 <action android:name="android.service.notification.NotificationListenerService" />
             </intent-filter>
         </service>
+
+        <activity
+            android:name="com.hybdms.glownotifier.Blacklist"
+            android:label="@string/title_activity_blacklist"
+            android:parentActivityName="com.hybdms.glownotifier.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hybdms.glownotifier.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.hybdms.glownotifier.Blacklist_Addnew"
+            android:label="@string/title_activity_blacklist__addnew"
+            android:parentActivityName="com.hybdms.glownotifier.Blacklist" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hybdms.glownotifier.Blacklist" />
+        </activity>
     </application>
 
 </manifest>

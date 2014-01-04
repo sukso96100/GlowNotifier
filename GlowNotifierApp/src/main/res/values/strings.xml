@@ -57,8 +57,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="tutorial_2">Customization</string>
     <string name="tutorial_2_0">You can customize the color, position, more of the Glow</string>
     <string name="tutorial_done">Done!</string>
-
     <string name="width">Width of Glow :</string>
+
     <string-array name="widthentry">
         <item>default * 0.3</item>
         <item>default * 0.4</item>
@@ -74,6 +74,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </string-array>
 
     <string name="height">Height of Glow :</string>
+
     <string-array name="heightentry">
         <item>default * 0.3</item>
         <item>default * 0.4</item>
@@ -89,9 +90,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </string-array>
 
     <string name="visit">Visit GlowNotifier Website</string>
-    <string name="blog">Visit Developer\&apos;\ s Blog</string>
+    <string name="blog">Visit Developer\'\ s Blog</string>
     <string name="glow_delay">Glow Delay Time(Milliseconds-default : 5000(5sec)) :</string>
-
     <string name="sysnotilistenerservice">GlowNotifier : Notification Detector</string>
-
+    <string name="title_activity_blacklist">Blacklist</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_blacklist__addnew">Blacklist_Addnew</string>
+    <string name="db_alreayexist">Already Exist On Blacklist</string>
+    <string name="action_new">Add New</string>
 </resources>
