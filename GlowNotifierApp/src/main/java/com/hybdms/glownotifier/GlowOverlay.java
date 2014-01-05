@@ -224,8 +224,10 @@ public class GlowOverlay extends Service {
         mParams = new WindowManager.LayoutParams(
                 widthvalue,
                 heightvalue,
-                WindowManager.LayoutParams.TYPE_PHONE,
-                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, //Not Focusable
+                WindowManager.LayoutParams.TYPE_TOAST,
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE //Not Focusable
+                | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+                | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                 PixelFormat.TRANSLUCENT);     //Transparent
 
         //Gravity of The Overlay
