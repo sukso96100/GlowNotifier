@@ -26,18 +26,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="accessibility">알림 감지 서비스 설정</string>
     <string name="appinfo">애플리케이션 정보</string>
     <string name="app_settings">애플리케이션 설정</string>
-    <string name="color">색상 선택 :</string>
+    <string name="color">색상 선택</string>
     <string name="pos">알림빛 위치 선택 :</string>
-
-    <string-array name="colorentry">
-        <item>빨강색</item>
-        <item>주황색</item>
-        <item>노랑색</item>
-        <item>초록색</item>
-        <item>파랑색</item>
-        <item>남색</item>
-        <item>보라색</item>
-    </string-array>
 
     <string-array name="posentry">
         <item>상단</item>

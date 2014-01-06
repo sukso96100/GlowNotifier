@@ -22,12 +22,13 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ScaleDrawable;
 import android.os.IBinder;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.graphics.PixelFormat;
@@ -43,20 +44,6 @@ public class GlowOverlay extends Service {
     private Timer mTimer;
     private String DEBUGTAG = "GlowOverlay";
 
-
-    private OnTouchListener mViewTouchListener = new OnTouchListener() {
-        @Override public boolean onTouch(View v, MotionEvent event) {
-            switch(event.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                //GlowOverlay Touch Event
-
-
-
-            }
-            return true;
-        }
-    };
-
     @Override
     public IBinder onBind(Intent arg0) { return null; }
     @Override
@@ -64,170 +51,121 @@ public class GlowOverlay extends Service {
         super.onCreate();
         Log.d(DEBUGTAG, "Service Started");
 
+        //Create Image View
+        mGlowOverlay = new ImageView(this);
+
         //Load Preference Value
         SharedPreferences pref = getSharedPreferences("pref", Context.MODE_PRIVATE);
-        int colorentry_int = pref.getInt("colorentry", 0);
+        int color_int = pref.getInt("colorvalue", Color.WHITE);
         int posentry_int = pref.getInt("posentry",0);
         int widthentry_int = pref.getInt("widthentry", 5);
         int heightentry_int = pref.getInt("heightentry", 5);
         int glowdelay_int = Integer.parseInt(pref.getString("delaytime", "5000"));
 
-        //Create Image View
-        mGlowOverlay = new ImageView(this);
+        //Get Device Screen Width Value
+        DisplayMetrics metrics = getApplicationContext().getResources().getDisplayMetrics();
+        int devicewidth = metrics.widthPixels;
 
-        if(posentry_int == 0){
-            //If posentry value is 0 (Top)
-            if(colorentry_int == 0){
-                //Red
-                mGlowOverlay.setImageResource(R.drawable.glow_red_top);
-            }
-            else if(colorentry_int == 1){
-                //Orange
-                mGlowOverlay.setImageResource(R.drawable.glow_orange_top);
-            }
-            else if(colorentry_int == 2){
-                //Yellow
-                mGlowOverlay.setImageResource(R.drawable.glow_yellow_top);
-            }
-            else if(colorentry_int == 3){
-                //Green
-                mGlowOverlay.setImageResource(R.drawable.glow_green_top);
-            }
-            else if(colorentry_int == 4){
-                //Blue
-                mGlowOverlay.setImageResource(R.drawable.glow_blue_top);
-            }
-            else if(colorentry_int == 5){
-                //Indigo Blue
-                mGlowOverlay.setImageResource(R.drawable.glow_indigoblue_top);
+        //Gradient Drawable
+        GradientDrawable g = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[] { color_int, Color.TRANSPARENT });
+        g.setGradientType(GradientDrawable.RADIAL_GRADIENT);
+        g.setGradientRadius(devicewidth/2);
+            if(posentry_int == 0){
+                //If posentry value is 0 (Top)
+                g.setGradientCenter(0.5f, 0.0f);
             }
             else{
-                //Purple
-                mGlowOverlay.setImageResource(R.drawable.glow_purple_top);
+                //If posentry value is 1 (Bottom)
+                g.setGradientCenter(0.5f, 1.0f);
             }
 
+        //change width ratio value by loaded pref value
+        double widthvalue;
+        if(widthentry_int == 0 ){
+            widthvalue = 0.3;
+        }
+        else if(widthentry_int == 1){
+            widthvalue = 0.4;
+        }
+        else if(widthentry_int == 2){
+            widthvalue = 0.5;
+        }
+        else if(widthentry_int == 3){
+            widthvalue = 0.6;
+        }
+        else if(widthentry_int == 4){
+            widthvalue = 0.7;
+        }
+        else if(widthentry_int == 5){
+            widthvalue = 1.0;
+        }
+        else if(widthentry_int == 6){
+            widthvalue = 1.25;
+        }
+        else if(widthentry_int == 7){
+            widthvalue = 1.5;
+        }
+        else if(widthentry_int == 8){
+            widthvalue = 1.7;
+        }
+        else if(widthentry_int == 9){
+            widthvalue = 2.0;
         }
         else{
-            //If posentry value is 1 (Bottom)
-            if(colorentry_int == 0){
-                //Red
-                mGlowOverlay.setImageResource(R.drawable.glow_red_bottom);
-            }
-            else if(colorentry_int == 1){
-                //Orange
-                mGlowOverlay.setImageResource(R.drawable.glow_orange_bottom);
-            }
-            else if(colorentry_int == 2){
-                //Yellow
-                mGlowOverlay.setImageResource(R.drawable.glow_yellow_bottom);
-            }
-            else if(colorentry_int == 3){
-                //Green
-                mGlowOverlay.setImageResource(R.drawable.glow_green_bottom);
-            }
-            else if(colorentry_int == 4){
-                //Blue
-                mGlowOverlay.setImageResource(R.drawable.glow_blue_bottom);
-            }
-            else if(colorentry_int == 5){
-                //Indigo Blue
-                mGlowOverlay.setImageResource(R.drawable.glow_indigoblue_bottom);
-            }
-            else{
-                //Purple
-                mGlowOverlay.setImageResource(R.drawable.glow_purple_bottom);
-            }
+            widthvalue = 2.25;
         }
 
+        //change height ratio value by loaded pref value
+        double heightvalue;
+        if(heightentry_int == 0 ){
+            heightvalue = 0.3;
+        }
+        else if(heightentry_int == 1){
+            heightvalue = 0.4;
+        }
+        else if(heightentry_int == 2){
+            heightvalue = 0.5;
+        }
+        else if(heightentry_int == 3){
+            heightvalue = 0.6;
+        }
+        else if(heightentry_int == 4){
+            heightvalue = 0.7;
+        }
+        else if(heightentry_int == 5){
+            heightvalue = 1.0;
+        }
+        else if(heightentry_int == 6){
+            heightvalue = 1.25;
+        }
+        else if(heightentry_int == 7){
+            heightvalue = 1.5;
+        }
+        else if(heightentry_int == 8){
+            heightvalue = 1.7;
+        }
+        else if(heightentry_int == 9){
+            heightvalue = 2.0;
+        }
+        else{
+            heightvalue = 2.25;
+        }
+
+        g.setBounds(0,0, (int) (g.getIntrinsicWidth()*widthvalue), (int) (g.getIntrinsicHeight()*heightvalue));
+        mGlowOverlay.setImageDrawable(g);
 
         //Get width and height from the image
         int WRAP_CONTENT_WIDTH = mGlowOverlay.getDrawable().getIntrinsicWidth();
         int WRAP_CONTENT_HEIGHT = mGlowOverlay.getDrawable().getIntrinsicHeight();
 
-
-
-        //change WRAP_CONTENT_WIDTH value by loaded pref value
-        int widthvalue;
-        if(widthentry_int == 0 ){
-            widthvalue = (int) (WRAP_CONTENT_WIDTH * 0.3);
-        }
-        else if(widthentry_int == 1){
-            widthvalue = (int) (WRAP_CONTENT_WIDTH * 0.4);
-        }
-        else if(widthentry_int == 2){
-            widthvalue = (int) (WRAP_CONTENT_WIDTH * 0.5);
-        }
-        else if(widthentry_int == 3){
-            widthvalue = (int) (WRAP_CONTENT_WIDTH * 0.6);
-        }
-        else if(widthentry_int == 4){
-            widthvalue = (int) (WRAP_CONTENT_WIDTH * 0.7);
-        }
-        else if(widthentry_int == 5){
-            widthvalue = WRAP_CONTENT_WIDTH;
-        }
-        else if(widthentry_int == 6){
-            widthvalue = (int) (WRAP_CONTENT_WIDTH * 1.25);
-        }
-        else if(widthentry_int == 7){
-            widthvalue = (int) (WRAP_CONTENT_WIDTH * 1.5);
-        }
-        else if(widthentry_int == 8){
-            widthvalue = (int) (WRAP_CONTENT_WIDTH * 1.7);
-        }
-        else if(widthentry_int == 9){
-            widthvalue = (int) (WRAP_CONTENT_WIDTH * 2.0);
-        }
-        else{
-            widthvalue = (int) (WRAP_CONTENT_WIDTH * 2.25);
-        }
-
-        //change WRAP_CONTENT_height value by loaded pref value
-        int heightvalue;
-        if(heightentry_int == 0 ){
-            heightvalue = (int) (WRAP_CONTENT_HEIGHT * 0.3);
-        }
-        else if(heightentry_int == 1){
-            heightvalue = (int) (WRAP_CONTENT_HEIGHT * 0.4);
-        }
-        else if(heightentry_int == 2){
-            heightvalue = (int) (WRAP_CONTENT_HEIGHT * 0.5);
-        }
-        else if(heightentry_int == 3){
-            heightvalue = (int) (WRAP_CONTENT_HEIGHT * 0.6);
-        }
-        else if(heightentry_int == 4){
-            heightvalue = (int) (WRAP_CONTENT_HEIGHT * 0.7);
-        }
-        else if(heightentry_int == 5){
-            heightvalue = WRAP_CONTENT_HEIGHT;
-        }
-        else if(heightentry_int == 6){
-            heightvalue = (int) (WRAP_CONTENT_HEIGHT * 1.25);
-        }
-        else if(heightentry_int == 7){
-            heightvalue = (int) (WRAP_CONTENT_HEIGHT * 1.5);
-        }
-        else if(heightentry_int == 8){
-            heightvalue = (int) (WRAP_CONTENT_HEIGHT * 1.7);
-        }
-        else if(heightentry_int == 9){
-            heightvalue = (int) (WRAP_CONTENT_HEIGHT * 2.0);
-        }
-        else{
-            heightvalue = (int) (WRAP_CONTENT_HEIGHT * 2.25);
-        }
-
-
-        mGlowOverlay.setOnTouchListener(mViewTouchListener);
         //Settings for Overlay
         mParams = new WindowManager.LayoutParams(
-                widthvalue,
-                heightvalue,
+                WRAP_CONTENT_WIDTH,
+                WRAP_CONTENT_HEIGHT,
                 WindowManager.LayoutParams.TYPE_TOAST,
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE //Not Focusable
                 | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
-                | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, //GlowOverlay Never Receives Touch Input
                 PixelFormat.TRANSLUCENT);     //Transparent
 
         //Gravity of The Overlay

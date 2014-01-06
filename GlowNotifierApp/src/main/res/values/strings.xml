@@ -25,18 +25,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="accessibility">Notification Detection Service Settings</string>
     <string name="appinfo">About the App</string>
     <string name="app_settings">App Settings</string>
-    <string name="color">Select Color :</string>
+    <string name="color">Select Color</string>
     <string name="pos">Position of Glow :</string>
 
-    <string-array name="colorentry">
-        <item>Red</item>
-        <item>Orange</item>
-        <item>Yellow</item>
-        <item>Green</item>
-        <item>Blue</item>
-        <item>Indigo Blue</item>
-        <item>Purple</item>
-    </string-array>
     <string-array name="posentry">
         <item>Top</item>
         <item>Bottom</item>

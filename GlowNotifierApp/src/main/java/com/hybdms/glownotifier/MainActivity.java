@@ -21,6 +21,7 @@ package com.hybdms.glownotifier;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -41,17 +42,15 @@ public class MainActivity extends ActionBarActivity {
 
         // Load Preference Value
         SharedPreferences pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);
-        Spinner colorentry = (Spinner) findViewById(R.id.colorentry);  //colorentry spinner
         Spinner posentry = (Spinner) findViewById(R.id.posentry);  //posentry spinner
         Spinner widthentry = (Spinner) findViewById(R.id.widthentry); //widthentry spinner
         Spinner heightentry = (Spinner) findViewById(R.id.heightentry); //heightentry spinner
         EditText glowdleay = (EditText) findViewById(R.id.delaytime); //delaytime Edittext
-        int colorentry_int = pref.getInt("colorentry",0);
         int posentry_int = pref.getInt("posentry",0);
         int widthentry_int = pref.getInt("widthentry", 5);
         int heightentry_int = pref.getInt("heightentry", 5);
+
         String delaytime_String = pref.getString("delaytime", "5000");
-        colorentry.setSelection(colorentry_int);
         posentry.setSelection(posentry_int);
         widthentry.setSelection(widthentry_int);
         heightentry.setSelection(heightentry_int);
@@ -103,6 +102,14 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        TextView colorpicker = (TextView)findViewById(R.id.colorpicker);
+        colorpicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showColorPickerDialog();
+            }
+        });
+
     }
 
     public void onStop(){
@@ -111,19 +118,16 @@ public class MainActivity extends ActionBarActivity {
         //Save Preference Value
         SharedPreferences pref = getSharedPreferences("pref", Activity.MODE_PRIVATE); // Save UI State
         SharedPreferences.Editor editor = pref.edit(); // Load Editor
-        Spinner colorentry = (Spinner) findViewById(R.id.colorentry);
         Spinner posentry = (Spinner) findViewById(R.id.posentry);
         Spinner widthentry = (Spinner) findViewById(R.id.widthentry);
         Spinner heightentry = (Spinner) findViewById(R.id.heightentry);
         EditText glowdelay = (EditText) findViewById(R.id.delaytime);
         // Input values
-        int colorentry_selected_value = colorentry.getSelectedItemPosition();
         int posentry_selected_value = posentry.getSelectedItemPosition();
         int widthentry_selected_value = widthentry.getSelectedItemPosition();
         int hedightentry_selected_value = heightentry.getSelectedItemPosition();
         String delaytime_edited_value = glowdelay.getText().toString();
 
-        editor.putInt("colorentry", colorentry_selected_value);
         editor.putInt("posentry", posentry_selected_value);
         editor.putInt("widthentry", widthentry_selected_value);
         editor.putInt("heightentry", hedightentry_selected_value);
@@ -150,5 +154,24 @@ public class MainActivity extends ActionBarActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void showColorPickerDialog() {
+        SharedPreferences pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);  //Load Preference
+        int initialColor = pref.getInt("colorvalue", Color.WHITE);  //Load Color Value from Preference
+
+        ColorPickerDialog colorPickerDialog = new ColorPickerDialog(this, initialColor, new ColorPickerDialog.OnColorSelectedListener() {
+
+            @Override
+            public void onColorSelected(int color) {
+                SharedPreferences pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref.edit(); //Load Editor
+                editor.putInt("colorvalue", color); //Save Selected Color
+                editor.commit();
+            }
+
+        });
+        colorPickerDialog.show();
+
     }
 }
