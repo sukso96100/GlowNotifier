@@ -21,7 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="app_name">GlowNotifier</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_preview">미리보기</string>
-
+    <string name="action_new">새로 추가</string>
     <string name="service_and_info">서비스 설정 및 앱 정보</string>
     <string name="accessibility">알림 감지 서비스 설정</string>
     <string name="appinfo">애플리케이션 정보</string>
@@ -51,8 +51,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="tutorial_2_0">알림 빛의 색상, 위치 등을 개인화 하실 수 있습니다</string>
     <string name="tutorial_done">끝!</string>
 
-    <string name="width">알림빛 너비 :</string>
-    <string-array name="widthentry">
+    <string name="size">알림빛 크기 :</string>
+
+    <string-array name="sizentry">
         <item>기본값 * 0.3</item>
         <item>기본값 * 0.4</item>
         <item>기본값 * 0.5</item>
@@ -66,19 +67,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <item>기본값 * 2.25</item>
     </string-array>
 
-    <string name="height">알림빛 높이 :</string>
-    <string-array name="heightentry">
-        <item>기본값 * 0.3</item>
-        <item>기본값 * 0.4</item>
-        <item>기본값 * 0.5</item>
-        <item>기본값 * 0.6</item>
-        <item>기본값 * 0.7</item>
-        <item>기본값</item>
-        <item>기본값 * 1.25</item>
-        <item>기본값 * 1.5</item>
-        <item>기본값 * 1.75</item>
-        <item>기본값 * 2.0</item>
-        <item>기본값 * 2.25</item>
+    <string name="shape">알림빛 모양 :</string>
+
+    <string-array name="shapentry">
+        <item>원형 그라디언트(기본값)</item>
+        <item>선형 그라디언트</item>
     </string-array>
 
     <string name="visit">GlowNotifier 웹사이트 방문</string>
@@ -87,7 +80,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     <string name="sysnotilistenerservice">GlowNotifier : 알림감지</string>
     <string name="db_alreayexist">이미 차단목록에 존재합니다.</string>
-    <string name="action_new">새로 추가</string>
     <string name="title_activity_blacklist">알림 차단 목록</string>
     <string name="title_activity_blacklist__addnew">새로 추가</string>
     <string name="db_removed">차단목록에서 제거되었습니다.</string>

@@ -24,7 +24,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.ScaleDrawable;
 import android.os.IBinder;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -58,100 +57,81 @@ public class GlowOverlay extends Service {
         SharedPreferences pref = getSharedPreferences("pref", Context.MODE_PRIVATE);
         int color_int = pref.getInt("colorvalue", Color.WHITE);
         int posentry_int = pref.getInt("posentry",0);
-        int widthentry_int = pref.getInt("widthentry", 5);
-        int heightentry_int = pref.getInt("heightentry", 5);
+        int ratio_int = pref.getInt("ratiovalue", 5);
         int glowdelay_int = Integer.parseInt(pref.getString("delaytime", "5000"));
+        int shape_int = pref.getInt("shapentry", 0);
 
         //Get Device Screen Width Value
         DisplayMetrics metrics = getApplicationContext().getResources().getDisplayMetrics();
         int devicewidth = metrics.widthPixels;
-
-        //Gradient Drawable
-        GradientDrawable g = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[] { color_int, Color.TRANSPARENT });
-        g.setGradientType(GradientDrawable.RADIAL_GRADIENT);
-        g.setGradientRadius(devicewidth/2);
-            if(posentry_int == 0){
-                //If posentry value is 0 (Top)
-                g.setGradientCenter(0.5f, 0.0f);
-            }
-            else{
-                //If posentry value is 1 (Bottom)
-                g.setGradientCenter(0.5f, 1.0f);
-            }
+        int defaultdistance = devicewidth / 2;
 
         //change width ratio value by loaded pref value
-        double widthvalue;
-        if(widthentry_int == 0 ){
-            widthvalue = 0.3;
+        double ratiovalue;
+        if(ratio_int == 0 ){
+            ratiovalue = 0.3;
         }
-        else if(widthentry_int == 1){
-            widthvalue = 0.4;
+        else if(ratio_int == 1){
+            ratiovalue = 0.4;
         }
-        else if(widthentry_int == 2){
-            widthvalue = 0.5;
+        else if(ratio_int == 2){
+            ratiovalue = 0.5;
         }
-        else if(widthentry_int == 3){
-            widthvalue = 0.6;
+        else if(ratio_int == 3){
+            ratiovalue = 0.6;
         }
-        else if(widthentry_int == 4){
-            widthvalue = 0.7;
+        else if(ratio_int == 4){
+            ratiovalue = 0.7;
         }
-        else if(widthentry_int == 5){
-            widthvalue = 1.0;
+        else if(ratio_int == 5){
+            ratiovalue = 1.0;
         }
-        else if(widthentry_int == 6){
-            widthvalue = 1.25;
+        else if(ratio_int == 6){
+            ratiovalue = 1.25;
         }
-        else if(widthentry_int == 7){
-            widthvalue = 1.5;
+        else if(ratio_int == 7){
+            ratiovalue = 1.5;
         }
-        else if(widthentry_int == 8){
-            widthvalue = 1.7;
+        else if(ratio_int == 8){
+            ratiovalue = 1.7;
         }
-        else if(widthentry_int == 9){
-            widthvalue = 2.0;
-        }
-        else{
-            widthvalue = 2.25;
-        }
-
-        //change height ratio value by loaded pref value
-        double heightvalue;
-        if(heightentry_int == 0 ){
-            heightvalue = 0.3;
-        }
-        else if(heightentry_int == 1){
-            heightvalue = 0.4;
-        }
-        else if(heightentry_int == 2){
-            heightvalue = 0.5;
-        }
-        else if(heightentry_int == 3){
-            heightvalue = 0.6;
-        }
-        else if(heightentry_int == 4){
-            heightvalue = 0.7;
-        }
-        else if(heightentry_int == 5){
-            heightvalue = 1.0;
-        }
-        else if(heightentry_int == 6){
-            heightvalue = 1.25;
-        }
-        else if(heightentry_int == 7){
-            heightvalue = 1.5;
-        }
-        else if(heightentry_int == 8){
-            heightvalue = 1.7;
-        }
-        else if(heightentry_int == 9){
-            heightvalue = 2.0;
+        else if(ratio_int == 9){
+            ratiovalue = 2.0;
         }
         else{
-            heightvalue = 2.25;
+            ratiovalue = 2.25;
         }
 
-        g.setBounds(0,0, (int) (g.getIntrinsicWidth()*widthvalue), (int) (g.getIntrinsicHeight()*heightvalue));
+        GradientDrawable g;
+        if(shape_int == 0){
+            //Circular Gradient Drawable
+            g = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[] { color_int, Color.TRANSPARENT });
+            g.setGradientType(GradientDrawable.RADIAL_GRADIENT);
+            g.setGradientRadius((float) (defaultdistance * ratiovalue));
+        }
+        else{
+            //Linear Gradient Drawable
+            GradientDrawable.Orientation linear_orientation;
+            if(posentry_int == 0){
+                linear_orientation = GradientDrawable.Orientation.TOP_BOTTOM;
+            }
+            else{
+                linear_orientation = GradientDrawable.Orientation.BOTTOM_TOP;
+            }
+            g = new GradientDrawable(linear_orientation, new int[] { color_int, Color.TRANSPARENT });
+            g.setGradientType(GradientDrawable.LINEAR_GRADIENT);
+            g.setSize(devicewidth, (int) (defaultdistance * ratiovalue));
+        }
+
+        if(posentry_int == 0){
+            //If posentry value is 0 (Top)
+            g.setGradientCenter(0.5f, 0.0f);
+        }
+        else{
+            //If posentry value is 1 (Bottom)
+            g.setGradientCenter(0.5f, 1.0f);
+        }
+
         mGlowOverlay.setImageDrawable(g);
 
         //Get width and height from the image
@@ -177,7 +157,7 @@ public class GlowOverlay extends Service {
             //If posentry value is 1 (Bottom)
             mParams.gravity = Gravity.BOTTOM | Gravity.CENTER;
         }
-        mGlowOverlay.setScaleType(ImageView.ScaleType.FIT_XY);
+      //  mGlowOverlay.setScaleType(ImageView.ScaleType.FIT_XY);
         mWindowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         mWindowManager.addView(mGlowOverlay, mParams);
 

@@ -21,7 +21,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     tools:context="com.hybdms.glownotifier.MainActivity" >
 
     <item android:id="@+id/action_new"
-        android:title="@string/action_new"
+        android:title=
+            "@string/action_new"
         android:orderInCategory="100"
         app:showAsAction="ifRoom"
         android:icon="@drawable/ic_action_new"/>

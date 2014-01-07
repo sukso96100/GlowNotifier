@@ -43,17 +43,17 @@ public class MainActivity extends ActionBarActivity {
         // Load Preference Value
         SharedPreferences pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);
         Spinner posentry = (Spinner) findViewById(R.id.posentry);  //posentry spinner
-        Spinner widthentry = (Spinner) findViewById(R.id.widthentry); //widthentry spinner
-        Spinner heightentry = (Spinner) findViewById(R.id.heightentry); //heightentry spinner
+        Spinner sizentry = (Spinner) findViewById(R.id.sizentry); //widthentry spinner
+        Spinner shapentry = (Spinner) findViewById(R.id.shapentry); //heightentry spinner
         EditText glowdleay = (EditText) findViewById(R.id.delaytime); //delaytime Edittext
         int posentry_int = pref.getInt("posentry",0);
-        int widthentry_int = pref.getInt("widthentry", 5);
-        int heightentry_int = pref.getInt("heightentry", 5);
+        int sizentry_int = pref.getInt("ratiovalue", 5);
+        int shapentry_int = pref.getInt("shapentry", 0);
 
         String delaytime_String = pref.getString("delaytime", "5000");
         posentry.setSelection(posentry_int);
-        widthentry.setSelection(widthentry_int);
-        heightentry.setSelection(heightentry_int);
+        sizentry.setSelection(sizentry_int);
+        shapentry.setSelection(shapentry_int);
         glowdleay.setText(delaytime_String);
 
         //Launch Tutorial Activity If user new to this app
@@ -119,18 +119,18 @@ public class MainActivity extends ActionBarActivity {
         SharedPreferences pref = getSharedPreferences("pref", Activity.MODE_PRIVATE); // Save UI State
         SharedPreferences.Editor editor = pref.edit(); // Load Editor
         Spinner posentry = (Spinner) findViewById(R.id.posentry);
-        Spinner widthentry = (Spinner) findViewById(R.id.widthentry);
-        Spinner heightentry = (Spinner) findViewById(R.id.heightentry);
+        Spinner sizentry = (Spinner) findViewById(R.id.sizentry);
+        Spinner shapentry = (Spinner) findViewById(R.id.shapentry);
         EditText glowdelay = (EditText) findViewById(R.id.delaytime);
         // Input values
         int posentry_selected_value = posentry.getSelectedItemPosition();
-        int widthentry_selected_value = widthentry.getSelectedItemPosition();
-        int hedightentry_selected_value = heightentry.getSelectedItemPosition();
+        int sizentry_selected_value = sizentry.getSelectedItemPosition();
+        int shapentry_selected_value = shapentry.getSelectedItemPosition();
         String delaytime_edited_value = glowdelay.getText().toString();
 
         editor.putInt("posentry", posentry_selected_value);
-        editor.putInt("widthentry", widthentry_selected_value);
-        editor.putInt("heightentry", hedightentry_selected_value);
+        editor.putInt("ratiovalue", sizentry_selected_value);
+        editor.putInt("shapentry", shapentry_selected_value);
         editor.putString("delaytime", delaytime_edited_value);
         editor.commit(); // Save values
     }

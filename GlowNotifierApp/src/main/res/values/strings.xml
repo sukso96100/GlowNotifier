@@ -21,6 +21,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="app_name">GlowNotifier</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_preview">Preview</string>
+    <string name="action_new">Add New</string>
     <string name="service_and_info">Service Toggle and App info</string>
     <string name="accessibility">Notification Detection Service Settings</string>
     <string name="appinfo">About the App</string>
@@ -48,9 +49,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="tutorial_2">Customization</string>
     <string name="tutorial_2_0">You can customize the color, position, more of the Glow</string>
     <string name="tutorial_done">Done!</string>
-    <string name="width">Width of Glow :</string>
+    <string name="size">Size of Glow :</string>
 
-    <string-array name="widthentry">
+    <string-array name="sizentry">
         <item>default * 0.3</item>
         <item>default * 0.4</item>
         <item>default * 0.5</item>
@@ -64,20 +65,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <item>default * 2.25</item>
     </string-array>
 
-    <string name="height">Height of Glow :</string>
+    <string name="shape">Shape of Glow :</string>
 
-    <string-array name="heightentry">
-        <item>default * 0.3</item>
-        <item>default * 0.4</item>
-        <item>default * 0.5</item>
-        <item>default * 0.6</item>
-        <item>default * 0.7</item>
-        <item>default</item>
-        <item>default * 1.25</item>
-        <item>default * 1.5</item>
-        <item>default * 1.75</item>
-        <item>default * 2.0</item>
-        <item>default * 2.25</item>
+    <string-array name="shapentry">
+        <item>Circular Gradient(default)</item>
+        <item>Linear Gradient</item>
     </string-array>
 
     <string name="visit">Visit GlowNotifier Website</string>

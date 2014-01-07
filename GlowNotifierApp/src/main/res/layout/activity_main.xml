@@ -88,7 +88,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             android:padding="10dp"
             android:layout_marginTop="10dp"/>
 
-    <TextView
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/shape"
+            android:id="@+id/textView6"
+            android:padding="5dp"
+            android:layout_marginTop="10dp"/>
+
+        <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/shapentry"
+        android:entries="@array/shapentry"
+        android:background="@drawable/cardbg"
+        android:padding="10dp"/>
+
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/pos"
@@ -96,7 +112,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         android:padding="5dp"
         android:layout_marginTop="10dp"/>
 
-    <Spinner
+        <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/posentry"
@@ -106,7 +122,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/width"
+        android:text="@string/size"
         android:id="@+id/textView6"
         android:padding="5dp"
         android:layout_marginTop="10dp"/>
@@ -114,24 +130,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/widthentry"
-        android:entries="@array/widthentry"
-        android:background="@drawable/cardbg"
-        android:padding="10dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/height"
-        android:id="@+id/textView6"
-        android:padding="5dp"
-        android:layout_marginTop="10dp"/>
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/heightentry"
-        android:entries="@array/heightentry"
+        android:id="@+id/sizentry"
+        android:entries="@array/sizentry"
         android:background="@drawable/cardbg"
         android:padding="10dp"/>
 

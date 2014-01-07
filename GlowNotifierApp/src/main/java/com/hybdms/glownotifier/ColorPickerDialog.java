@@ -1,5 +1,5 @@
 /*
-* This File(ColorPicker.java) is a part of GlowNotifier Source Code
+* This File(ColorPickerDialog.java) is a part of GlowNotifier Source Code
 * which is maintained and copyrighted by Youngbin Han<sukso96100@gmail.com>
 * and licensed under the GNU General Public License Version 3
 * <http://www.gnu.org/licenses/>
