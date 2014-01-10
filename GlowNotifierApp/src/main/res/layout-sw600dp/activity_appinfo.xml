@@ -1,0 +1,183 @@
+<!--
+GlowNotifier Application for Android
+Copyright (C) 2013 Youngbin Han<sukso96100@gmail.com>
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <LinearLayout android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/appinfo"
+            android:id="@+id/textView"
+            android:padding="5dp"/>
+        <LinearLayout android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal" >
+            <LinearLayout android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_margin="5dp">
+                <!-- child views -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Version"
+                    android:id="@+id/version"
+                    android:background="@drawable/cardbg"
+                    android:padding="10dp"
+                    android:layout_marginTop="10dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/src"
+                    android:id="@+id/src"
+                    android:background="@drawable/cardbg"
+                    android:padding="10dp"
+                    android:layout_marginTop="10dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/visit"
+                    android:id="@+id/visit"
+                    android:background="@drawable/cardbg"
+                    android:padding="10dp"
+                    android:layout_marginTop="10dp"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_margin="5dp">
+                <!-- child views -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/update"
+                    android:id="@+id/update"
+                    android:background="@drawable/cardbg"
+                    android:padding="10dp"
+                    android:layout_marginTop="10dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/tutorial"
+                    android:id="@+id/tutorial"
+                    android:background="@drawable/cardbg"
+                    android:padding="10dp"
+                    android:layout_marginTop="10dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/blog"
+                    android:id="@+id/blog"
+                    android:background="@drawable/cardbg"
+                    android:padding="10dp"
+                    android:layout_marginTop="10dp"/>
+            </LinearLayout>
+        </LinearLayout>
+        <TextView
+            android:layout_marginTop="20dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/legal"
+            android:id="@+id/docs" />
+        <LinearLayout android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal" >
+            <LinearLayout android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_margin="5dp">
+                <!-- child views -->
+                <TextView
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="README"
+                    android:id="@+id/readme"
+                    android:background="@drawable/cardbg"/>
+                <TextView
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="COPYING"
+                    android:id="@+id/copying"
+                    android:background="@drawable/cardbg"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_margin="5dp">
+                <!-- child views -->
+                <TextView
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="NOTICES"
+                    android:id="@+id/notices"
+                    android:background="@drawable/cardbg"/>
+                <TextView
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="CONTRIBUTORS"
+                    android:id="@+id/contrubutors"
+                    android:background="@drawable/cardbg"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
