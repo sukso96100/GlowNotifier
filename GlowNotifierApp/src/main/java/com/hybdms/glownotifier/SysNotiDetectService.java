@@ -21,8 +21,13 @@ package com.hybdms.glownotifier;
 import android.accessibilityservice.AccessibilityService;
 import android.accessibilityservice.AccessibilityServiceInfo;
 import android.app.Notification;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.drawable.Drawable;
 import android.os.Parcelable;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
@@ -37,6 +42,10 @@ private String DEBUGTAG = "SysNotiDetectService";
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
+
+        //Load Preference Value
+        SharedPreferences pref = getSharedPreferences("pref", Context.MODE_PRIVATE);
+        int colormethod_int = pref.getInt("colormethodentry", 0);
 
         // Load BlackList
         mHelper = new BlacklistDBhelper(this);
@@ -69,7 +78,24 @@ private String DEBUGTAG = "SysNotiDetectService";
                 else{
                 //Show GlowOverlay
                 Log.d(DEBUGTAG, "Starting GlowOverlay");
-                startService(new Intent(SysNotiDetectService.this, GlowOverlay.class));
+
+                    Intent i = new Intent(SysNotiDetectService.this, GlowOverlay.class);
+                    if(colormethod_int == 1){
+                        // Get App Icon
+                        final PackageManager pm = getApplicationContext().getPackageManager();
+                        ApplicationInfo ai;
+                        try {
+                            ai = pm.getApplicationInfo((String) event.getPackageName(), 0);
+                        } catch (final PackageManager.NameNotFoundException e) {
+                            ai = null;
+                        }
+                        Drawable appicon = pm.getApplicationIcon(ai);
+                        //Get Average Color
+                        int autocolor = BitmapAverageColor.getAverageColorCodeRGB(appicon);
+                        i.putExtra("", autocolor);
+                    }
+                    else{}
+                    startService(i);
                 }
             }
             else{
@@ -77,6 +103,8 @@ private String DEBUGTAG = "SysNotiDetectService";
             }
         }
     }
+
+
 
     @Override
     protected void onServiceConnected() {
@@ -92,4 +120,6 @@ private String DEBUGTAG = "SysNotiDetectService";
     public void onInterrupt() {
         System.out.println("onInterrupt");
     }
+
+
 }

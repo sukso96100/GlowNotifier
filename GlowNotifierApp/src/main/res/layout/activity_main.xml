@@ -82,7 +82,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/color"
+            android:text="@string/title_activity_color_settings"
             android:id="@+id/colorpicker"
             android:background="@drawable/cardbg"
             android:padding="10dp"

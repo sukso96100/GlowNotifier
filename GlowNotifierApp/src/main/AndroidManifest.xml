@@ -18,8 +18,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hybdms.glownotifier"
-    android:versionCode="7"
-    android:versionName="0.22.1-beta7" >
+    android:versionCode="8"
+    android:versionName="0.33-beta8" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -128,6 +128,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.hybdms.glownotifier.Blacklist" />
+        </activity>
+        <activity
+            android:name="com.hybdms.glownotifier.ColorSettings"
+            android:label="@string/title_activity_color_settings"
+            android:parentActivityName="com.hybdms.glownotifier.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hybdms.glownotifier.MainActivity" />
         </activity>
     </application>
 

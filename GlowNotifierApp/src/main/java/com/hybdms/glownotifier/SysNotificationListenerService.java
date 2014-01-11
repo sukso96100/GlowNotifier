@@ -19,8 +19,13 @@
 package com.hybdms.glownotifier;
 
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
@@ -40,6 +45,9 @@ public class SysNotificationListenerService extends NotificationListenerService 
     //When new notification posted on status ber
     @Override
     public void onNotificationPosted(StatusBarNotification sbn) {
+        //Load Preference Value
+        SharedPreferences pref = getSharedPreferences("pref", Context.MODE_PRIVATE);
+        int colormethod_int = pref.getInt("colormethodentry", 0);
 
         // Load BlackList
         mHelper = new BlacklistDBhelper(this);
@@ -64,7 +72,23 @@ public class SysNotificationListenerService extends NotificationListenerService 
         //Show GlowOverlay
         Log.d(DEBUGTAG, "+++++++++++++++++++++++++++++++++++++++++++++++");
         Log.d(DEBUGTAG, "Starting GlowOverlay");
-        startService(new Intent(this, GlowOverlay.class));
+                Intent i = new Intent(SysNotificationListenerService.this, GlowOverlay.class);
+                if(colormethod_int == 1){
+                    // Get App Icon
+                    final PackageManager pm = getApplicationContext().getPackageManager();
+                    ApplicationInfo ai;
+                    try {
+                        ai = pm.getApplicationInfo((String) sbn.getPackageName(), 0);
+                    } catch (final PackageManager.NameNotFoundException e) {
+                        ai = null;
+                    }
+                    Drawable appicon = pm.getApplicationIcon(ai);
+                    //Get Average Color
+                    int autocolor = BitmapAverageColor.getAverageColorCodeRGB(appicon);
+                    i.putExtra("autocolorvalue", autocolor);
+                }
+                else{}
+                startService(i);
             }
         }
     }

@@ -106,7 +106,8 @@ public class MainActivity extends ActionBarActivity {
         colorpicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showColorPickerDialog();
+                Intent ColorSet = new Intent(MainActivity.this, ColorSettings.class);
+                startActivity(ColorSet);
             }
         });
 

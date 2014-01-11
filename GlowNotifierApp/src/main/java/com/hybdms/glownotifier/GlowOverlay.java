@@ -24,6 +24,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Bundle;
 import android.os.IBinder;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -45,9 +46,9 @@ public class GlowOverlay extends Service {
 
     @Override
     public IBinder onBind(Intent arg0) { return null; }
+
     @Override
-    public void onCreate() {
-        super.onCreate();
+    public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(DEBUGTAG, "Service Started");
 
         //Create Image View
@@ -55,11 +56,20 @@ public class GlowOverlay extends Service {
 
         //Load Preference Value
         SharedPreferences pref = getSharedPreferences("pref", Context.MODE_PRIVATE);
-        int color_int = pref.getInt("colorvalue", Color.WHITE);
+
         int posentry_int = pref.getInt("posentry",0);
         int ratio_int = pref.getInt("ratiovalue", 5);
         int glowdelay_int = Integer.parseInt(pref.getString("delaytime", "5000"));
         int shape_int = pref.getInt("shapentry", 0);
+        int colormethod_int = pref.getInt("colormethodentry", 0);
+        int color_int = 0;
+        //Load Color Value
+        if(colormethod_int == 0){
+            color_int = pref.getInt("colorvalue", Color.WHITE);
+        }
+        else{
+            color_int = intent.getIntExtra("autocolorvalue", 0);
+        }
 
         //Get Device Screen Width Value
         DisplayMetrics metrics = getApplicationContext().getResources().getDisplayMetrics();
@@ -144,8 +154,8 @@ public class GlowOverlay extends Service {
                 WRAP_CONTENT_HEIGHT,
                 WindowManager.LayoutParams.TYPE_TOAST,
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE //Not Focusable
-                | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
-                | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, //GlowOverlay Never Receives Touch Input
+                        | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+                        | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, //GlowOverlay Never Receives Touch Input
                 PixelFormat.TRANSLUCENT);     //Transparent
 
         //Gravity of The Overlay
@@ -157,7 +167,7 @@ public class GlowOverlay extends Service {
             //If posentry value is 1 (Bottom)
             mParams.gravity = Gravity.BOTTOM | Gravity.CENTER;
         }
-      //  mGlowOverlay.setScaleType(ImageView.ScaleType.FIT_XY);
+        //  mGlowOverlay.setScaleType(ImageView.ScaleType.FIT_XY);
         mWindowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         mWindowManager.addView(mGlowOverlay, mParams);
 
@@ -170,7 +180,10 @@ public class GlowOverlay extends Service {
         };
         mTimer = new Timer();
         mTimer.schedule(mTask, glowdelay_int);
+
+        return super.onStartCommand(intent, flags, startId);
     }
+
     @Override
     public void onDestroy() {
         //Remove the View
@@ -178,6 +191,5 @@ public class GlowOverlay extends Service {
             if(mGlowOverlay != null) mWindowManager.removeView(mGlowOverlay);
         }
         super.onDestroy();
-
     }
 }

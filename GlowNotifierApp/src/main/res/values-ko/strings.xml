@@ -86,5 +86,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="blacklist_info">이 목록에 있는 앱의 알림에 대해서는 \n
         알림빛이 나타나지 않습니다. \n
         항목을 차단목록에서 지우려면, 길게 누르세요.</string>
+    <string name="title_activity_color_settings">알림빛 색상 설정</string>
+    <string name="color_method">색상 선택 방법 :</string>
+    <string-array name="color_method_entry">
+        <item>고정된 색상</item>
+        <item>색상 자동 선택</item>
+    </string-array>
+    <string name="pick_color_fixed">고정 색상 선택</string>
 
 </resources>

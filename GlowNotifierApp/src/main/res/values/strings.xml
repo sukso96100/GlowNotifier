@@ -84,4 +84,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="blacklist_info">Glow will not appear for \n
         blacklisted apps\'\  notification. \n
         Longclick to remove item from blacklist.</string>
+    <string name="title_activity_color_settings">Glow Color Settings</string>
+    <string name="color_method">Color Picking Method :</string>
+    <string-array name="color_method_entry">
+        <item>Fixed Color</item>
+        <item>Auto Color Picking</item>
+    </string-array>
+    <string name="pick_color_fixed">Pick Fixed Color</string>
 </resources>
