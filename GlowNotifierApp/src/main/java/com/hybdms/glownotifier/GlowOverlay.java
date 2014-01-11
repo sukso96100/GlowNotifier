@@ -68,7 +68,7 @@ public class GlowOverlay extends Service {
             color_int = pref.getInt("colorvalue", Color.WHITE);
         }
         else{
-            color_int = intent.getIntExtra("autocolorvalue", 0);
+            color_int = intent.getIntExtra("autocolorvalue", Color.WHITE);
         }
 
         //Get Device Screen Width Value
@@ -172,6 +172,7 @@ public class GlowOverlay extends Service {
         mWindowManager.addView(mGlowOverlay, mParams);
 
         // Stop this Service in a few seconds
+        /*
         mTask = new TimerTask() {
             @Override
             public void run() {
@@ -180,8 +181,25 @@ public class GlowOverlay extends Service {
         };
         mTimer = new Timer();
         mTimer.schedule(mTask, glowdelay_int);
-
+        */
         return super.onStartCommand(intent, flags, startId);
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+        SharedPreferences pref = getSharedPreferences("pref", Context.MODE_PRIVATE);
+        int glowdelay_int = Integer.parseInt(pref.getString("delaytime", "5000"));
+        // Stop this Service in a few seconds
+        mTask = new TimerTask() {
+            @Override
+            public void run() {
+                stopSelf();
+            }
+        };
+        mTimer = new Timer();
+        mTimer.schedule(mTask, glowdelay_int);
     }
 
     @Override

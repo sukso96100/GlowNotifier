@@ -66,6 +66,9 @@ private String DEBUGTAG = "SysNotiDetectService";
         if (event.getEventType() == AccessibilityEvent.TYPE_NOTIFICATION_STATE_CHANGED) {
             System.out.println("notification: " + event.getText());
 
+            //Stop GlowOverlay first
+            stopService(new Intent(this, GlowOverlay.class));
+
             String pkgnameforfilter = event.getPackageName().toString();
 
             //Filter Toast Out
@@ -92,7 +95,7 @@ private String DEBUGTAG = "SysNotiDetectService";
                         Drawable appicon = pm.getApplicationIcon(ai);
                         //Get Average Color
                         int autocolor = BitmapAverageColor.getAverageColorCodeRGB(appicon);
-                        i.putExtra("", autocolor);
+                        i.putExtra("autocolorvalue", autocolor);
                     }
                     else{}
                     startService(i);

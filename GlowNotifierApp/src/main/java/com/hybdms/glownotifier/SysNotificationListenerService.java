@@ -69,6 +69,8 @@ public class SysNotificationListenerService extends NotificationListenerService 
                 //Do Nothing
             }
             else{
+                //Stop GlowOverlay first
+                stopService(new Intent(this, GlowOverlay.class));
         //Show GlowOverlay
         Log.d(DEBUGTAG, "+++++++++++++++++++++++++++++++++++++++++++++++");
         Log.d(DEBUGTAG, "Starting GlowOverlay");
