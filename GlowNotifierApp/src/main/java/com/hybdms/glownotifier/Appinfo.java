@@ -95,6 +95,15 @@ public class Appinfo extends ActionBarActivity {
             }
         });
 
+        TextView translate = (TextView)findViewById(R.id.translate);
+        translate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent translate = new Intent(Intent.ACTION_VIEW);
+                translate.setData(Uri.parse("http://hanyoungbin.oneskyapp.com/collaboration/project?id=18784"));
+                startActivity(translate);
+            }
+        });
         TextView readme = (TextView)findViewById(R.id.readme);
         readme.setOnClickListener(new OnClickListener() {
             @Override

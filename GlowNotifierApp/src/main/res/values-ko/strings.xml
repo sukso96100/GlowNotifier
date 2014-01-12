@@ -61,7 +61,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <item>기본값 * 0.7</item>
         <item>기본값</item>
         <item>기본값 * 1.25</item>
-        <item>기본값 * 1.5</item>
+        <item>기본값 * 1.5</item>기
         <item>기본값 * 1.75</item>
         <item>기본값 * 2.0</item>
         <item>기본값 * 2.25</item>
@@ -93,5 +93,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <item>색상 자동 선택</item>
     </string-array>
     <string name="pick_color_fixed">고정 색상 선택</string>
+    <string name="translate">이 앱 번역 돕기</string>
 
 </resources>

@@ -91,4 +91,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <item>Auto Color Picking</item>
     </string-array>
     <string name="pick_color_fixed">Pick Fixed Color</string>
+    <string name="translate">Help Translating This App</string>
 </resources>
