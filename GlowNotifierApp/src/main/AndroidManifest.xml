@@ -18,8 +18,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hybdms.glownotifier"
-    android:versionCode="9"
-    android:versionName="0.33.1-beta9" >
+    android:versionCode="10"
+    android:versionName="0.33.3-beta" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -52,7 +52,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         </activity>
         <activity
             android:name="com.hybdms.glownotifier.Doc_Readme"
-            android:label="@string/appinfo"
+            android:label=
+                "@string/appinfo"
             android:parentActivityName="com.hybdms.glownotifier.Appinfo" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

@@ -115,7 +115,8 @@ public class GlowOverlay extends Service {
         GradientDrawable g;
         if(shape_int == 0){
             //Circular Gradient Drawable
-            g = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[] { color_int, Color.TRANSPARENT });
+            g = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]
+                    { color_int, Color.argb(0, Color.red(color_int), Color.green(color_int), Color.blue(color_int)) });
             g.setGradientType(GradientDrawable.RADIAL_GRADIENT);
             g.setGradientRadius((float) (defaultdistance * ratiovalue));
         }
@@ -128,7 +129,8 @@ public class GlowOverlay extends Service {
             else{
                 linear_orientation = GradientDrawable.Orientation.BOTTOM_TOP;
             }
-            g = new GradientDrawable(linear_orientation, new int[] { color_int, Color.TRANSPARENT });
+            g = new GradientDrawable(linear_orientation, new int[]
+                    { color_int, Color.argb(0, Color.red(color_int), Color.green(color_int), Color.blue(color_int)) });
             g.setGradientType(GradientDrawable.LINEAR_GRADIENT);
             g.setSize(devicewidth, (int) (defaultdistance * ratiovalue));
         }
