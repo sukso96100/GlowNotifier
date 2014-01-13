@@ -139,7 +139,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         </activity>
         <activity
             android:name="com.hybdms.glownotifier.GlowActivity"
-            android:label="@string/title_activity_glow" >
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_glow"
+            android:theme="@style/FullscreenTheme" >
         </activity>
     </application>
 
