@@ -143,6 +143,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             android:label="@string/title_activity_glow"
             android:theme="@style/FullscreenTheme" >
         </activity>
+        <activity
+            android:name="com.hybdms.glownotifier.GlowScreenSettings"
+            android:label="@string/title_activity_glow_screen_settings"
+            android:parentActivityName="com.hybdms.glownotifier.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hybdms.glownotifier.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
