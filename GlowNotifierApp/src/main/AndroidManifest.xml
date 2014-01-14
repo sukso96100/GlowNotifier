@@ -26,6 +26,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -139,7 +140,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         </activity>
         <activity
             android:name="com.hybdms.glownotifier.GlowActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_glow"
             android:theme="@style/FullscreenTheme" >
         </activity>

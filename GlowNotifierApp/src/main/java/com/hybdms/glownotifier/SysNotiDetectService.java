@@ -20,6 +20,7 @@ package com.hybdms.glownotifier;
 
 import android.accessibilityservice.AccessibilityService;
 import android.accessibilityservice.AccessibilityServiceInfo;
+import android.app.KeyguardManager;
 import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
@@ -29,6 +30,8 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.os.Parcelable;
+import android.os.PowerManager;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 
@@ -79,26 +82,61 @@ private String DEBUGTAG = "SysNotiDetectService";
                     //Do Nothing
                 }
                 else{
-                //Show GlowOverlay
-                Log.d(DEBUGTAG, "Starting GlowOverlay");
+                    //Get Device Screen Status
+                    PowerManager pwm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+                    boolean isScreenOn = pwm.isScreenOn();
 
-                    Intent i = new Intent(SysNotiDetectService.this, GlowOverlay.class);
-                    if(colormethod_int == 1){
-                        // Get App Icon
-                        final PackageManager pm = getApplicationContext().getPackageManager();
-                        ApplicationInfo ai;
-                        try {
-                            ai = pm.getApplicationInfo((String) event.getPackageName(), 0);
-                        } catch (final PackageManager.NameNotFoundException e) {
-                            ai = null;
-                        }
-                        Drawable appicon = pm.getApplicationIcon(ai);
-                        //Get Average Color
-                        int autocolor = BitmapAverageColor.getAverageColorCodeRGB(appicon);
-                        i.putExtra("autocolorvalue", autocolor);
+                    // Get App Icon
+                    final PackageManager pm = getApplicationContext().getPackageManager();
+                    ApplicationInfo ai;
+                    try {
+                        ai = pm.getApplicationInfo((String) event.getPackageName(), 0);
+                    } catch (final PackageManager.NameNotFoundException e) {
+                        ai = null;
                     }
-                    else{}
-                    startService(i);
+                    Drawable appicon = pm.getApplicationIcon(ai);
+                    //Get Average Color
+                    int autocolor = BitmapAverageColor.getAverageColorCodeRGB(appicon);
+
+                    if(isScreenOn){
+                        //If the Screen is On
+                        //Show GlowOverlay
+                        Log.d(DEBUGTAG, "Starting GlowOverlay");
+
+                        Intent i = new Intent(SysNotiDetectService.this, GlowOverlay.class);
+                        if(colormethod_int == 1){
+                            i.putExtra("autocolorvalue", autocolor);
+                        }
+                        else{
+                            //Do Nothing
+                        }
+                        startService(i);
+                    }
+                    else{
+
+                        //If the Screen is Off
+                        //Wake the Screen Up
+                        PowerManager.WakeLock wakeLock = pwm.newWakeLock((PowerManager.ACQUIRE_CAUSES_WAKEUP), "TAG");
+                        wakeLock.acquire();
+                        //Disable Keyguard
+                        KeyguardManager.KeyguardLock k1;
+                        KeyguardManager km =(KeyguardManager)getSystemService(KEYGUARD_SERVICE);
+                        k1= km.newKeyguardLock("IN");
+                        k1.disableKeyguard();
+                        //Show GlowActivity
+                        Log.d(DEBUGTAG, "Starting GlowActivity");
+
+                        Intent a = new Intent(SysNotiDetectService.this, GlowActivity.class);
+                        if(colormethod_int == 1){
+                            a.putExtra("autocolorvalue", autocolor);
+                        }
+                        else{
+                            //Do Nothing
+                        }
+                        startActivity(a);
+                    }
+
+
                 }
             }
             else{
