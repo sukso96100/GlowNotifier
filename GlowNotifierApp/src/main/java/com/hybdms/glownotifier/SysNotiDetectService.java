@@ -100,6 +100,8 @@ private String DEBUGTAG = "SysNotiDetectService";
 
                     if(isScreenOn){
                         //If the Screen is On
+                        //Stop GlowOverlay first
+                        stopService(new Intent(this, GlowOverlay.class));
                         //Show GlowOverlay
                         Log.d(DEBUGTAG, "Starting GlowOverlay");
 
