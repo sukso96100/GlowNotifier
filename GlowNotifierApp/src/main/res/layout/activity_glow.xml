@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000000"
-    tools:context="com.hybdms.glownotifier.GlowActivity">
+    tools:context="com.hybdms.glownotifier.GlowActivity"
+    android:id="@+id/GlowScreenLayout">
 
     <view
         android:layout_width="wrap_content"
@@ -13,14 +14,16 @@
         android:layout_gravity="center"
         android:textSize="70dp"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView"
+        android:text="*"
+        android:id="@+id/notitext"
         android:textSize="15dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white"/>
 </RelativeLayout>

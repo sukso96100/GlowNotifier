@@ -27,6 +27,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -141,7 +142,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <activity
             android:name="com.hybdms.glownotifier.GlowActivity"
             android:label="@string/title_activity_glow"
-            android:theme="@style/FullscreenTheme" >
+            android:theme="@style/Theme.Gray.FullScreen"
+            android:excludeFromRecents="true">
         </activity>
         <activity
             android:name="com.hybdms.glownotifier.GlowScreenSettings"

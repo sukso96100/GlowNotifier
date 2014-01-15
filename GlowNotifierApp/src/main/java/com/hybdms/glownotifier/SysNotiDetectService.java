@@ -85,7 +85,6 @@ private String DEBUGTAG = "SysNotiDetectService";
                     //Get Device Screen Status
                     PowerManager pwm = (PowerManager) getSystemService(Context.POWER_SERVICE);
                     boolean isScreenOn = pwm.isScreenOn();
-
                     // Get App Icon
                     final PackageManager pm = getApplicationContext().getPackageManager();
                     ApplicationInfo ai;
@@ -104,7 +103,6 @@ private String DEBUGTAG = "SysNotiDetectService";
                         stopService(new Intent(this, GlowOverlay.class));
                         //Show GlowOverlay
                         Log.d(DEBUGTAG, "Starting GlowOverlay");
-
                         Intent i = new Intent(SysNotiDetectService.this, GlowOverlay.class);
                         if(colormethod_int == 1){
                             i.putExtra("autocolorvalue", autocolor);
@@ -115,10 +113,10 @@ private String DEBUGTAG = "SysNotiDetectService";
                         startService(i);
                     }
                     else{
-
                         //If the Screen is Off
                         //Wake the Screen Up
-                        PowerManager.WakeLock wakeLock = pwm.newWakeLock((PowerManager.ACQUIRE_CAUSES_WAKEUP), "TAG");
+                        PowerManager.WakeLock wakeLock = pwm.newWakeLock
+                                ((PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP), "TAG");
                         wakeLock.acquire();
                         //Disable Keyguard
                         KeyguardManager.KeyguardLock k1;
@@ -127,18 +125,18 @@ private String DEBUGTAG = "SysNotiDetectService";
                         k1.disableKeyguard();
                         //Show GlowActivity
                         Log.d(DEBUGTAG, "Starting GlowActivity");
-
                         Intent a = new Intent(SysNotiDetectService.this, GlowActivity.class);
                         if(colormethod_int == 1){
-                            a.putExtra("autocolorvalue", autocolor);
+                            a.putExtra("autocolorvalue", autocolor); //Color Value
+                            a.putExtra("notistring", event.getText().toString()); //Notification Text
+                            a.putExtra("ParcelableData", event.getParcelableData());
+                            a.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         }
                         else{
                             //Do Nothing
                         }
                         startActivity(a);
                     }
-
-
                 }
             }
             else{

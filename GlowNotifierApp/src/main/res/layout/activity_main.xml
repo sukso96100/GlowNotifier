@@ -89,6 +89,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             android:layout_marginTop="10dp"/>
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/title_activity_glow_screen_settings"
+            android:id="@+id/glowscreen"
+            android:background="@drawable/cardbg"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/shape"

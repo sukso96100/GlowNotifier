@@ -104,7 +104,8 @@ public class SysNotificationListenerService extends NotificationListenerService 
                 else{
                     //If the Screen is Off
                     //Wake the Screen Up
-                    PowerManager.WakeLock wakeLock = pwm.newWakeLock((PowerManager.ACQUIRE_CAUSES_WAKEUP), "TAG");
+                    PowerManager.WakeLock wakeLock = pwm.newWakeLock
+                            ((PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP), "TAG");
                     wakeLock.acquire();
                     //Disable Keyguard
                     KeyguardManager.KeyguardLock k1;
@@ -117,15 +118,15 @@ public class SysNotificationListenerService extends NotificationListenerService 
                     Intent a = new Intent(SysNotificationListenerService.this, GlowActivity.class);
                     if(colormethod_int == 1){
                         a.putExtra("autocolorvalue", autocolor);
+                        a.putExtra("notistring", sbn.getNotification().tickerText);
+                        a.putExtra("ParcelableData", sbn.getNotification());
+                        a.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     }
                     else{
                         //Do Nothing
                     }
                     startActivity(a);
-
                 }
-
-
             }
         }
     }

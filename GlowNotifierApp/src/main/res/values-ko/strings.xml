@@ -94,5 +94,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </string-array>
     <string name="pick_color_fixed">고정 색상 선택</string>
     <string name="translate">이 앱 번역 돕기</string>
+    <string name="title_activity_glow_screen_settings">알림빛화면 설정</string>
 
 </resources>

@@ -38,7 +38,12 @@
     <style name="Theme.Gray.NoActionBar" parent="@style/Theme.AppCompat.Light.DarkActionBar">
         <!-- No ActionBar -->
         <item name="android:windowNoTitle">true</item>
+    </style>
 
+    <style name="Theme.Gray.FullScreen" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <!-- No ActionBar -->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
     </style>
 
     <style name="ActionBar.Solid.Gray" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
