@@ -1,38 +1,36 @@
 package com.hybdms.glownotifier;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.KeyguardManager;
 import android.app.Notification;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.graphics.PixelFormat;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.PowerManager;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class GlowActivity extends Activity {
     private ImageView mGlowOverlay;
-    private WindowManager.LayoutParams mParams;
-    private WindowManager mWindowManager;
+    String DEBUGTAG = "GlowActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_glow);
+
+        //Disable Keyguard
+        KeyguardManager.KeyguardLock k1;
+        KeyguardManager km =(KeyguardManager)getSystemService(KEYGUARD_SERVICE);
+        k1= km.newKeyguardLock("IN");
+        k1.disableKeyguard();
+
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB){
 
         }
@@ -50,10 +48,10 @@ public class GlowActivity extends Activity {
 
         int posentry_int = pref.getInt("posentry",0);
         int ratio_int = pref.getInt("ratiovalue", 5);
-        int glowdelay_int = Integer.parseInt(pref.getString("delaytime", "5000"));
+     // int glowdelay_int = Integer.parseInt(pref.getString("delaytime", "5000"));
         int shape_int = pref.getInt("shapentry", 0);
         int colormethod_int = pref.getInt("colormethodentry", 0);
-        int color_int = 0;
+        int color_int ;
         //Load Color Value
         if(colormethod_int == 0){
             color_int = pref.getInt("colorvalue", Color.WHITE);
@@ -106,6 +104,7 @@ getIntent().getIntExtra("autocolorvalue", Color.WHITE);
         GradientDrawable g;
         if(shape_int == 0){
             //Circular Gradient Drawable
+            Log.d(DEBUGTAG, "Circular Gradient Drawable");
             g = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]
                     { color_int, Color.argb(0, Color.red(color_int), Color.green(color_int), Color.blue(color_int)) });
             g.setGradientType(GradientDrawable.RADIAL_GRADIENT);
@@ -113,6 +112,7 @@ getIntent().getIntExtra("autocolorvalue", Color.WHITE);
         }
         else{
             //Linear Gradient Drawable
+            Log.d(DEBUGTAG, "Linear Gradient Drawable");
             GradientDrawable.Orientation linear_orientation;
             if(posentry_int == 0){
                 linear_orientation = GradientDrawable.Orientation.TOP_BOTTOM;
