@@ -49,6 +49,7 @@ private String DEBUGTAG = "SysNotiDetectService";
         //Load Preference Value
         SharedPreferences pref = getSharedPreferences("pref", Context.MODE_PRIVATE);
         int colormethod_int = pref.getInt("colormethodentry", 0);
+        boolean glowscreen_toggle = pref.getBoolean("glowscreen_toggle", true);
 
         // Load BlackList
         mHelper = new BlacklistDBhelper(this);
@@ -113,29 +114,29 @@ private String DEBUGTAG = "SysNotiDetectService";
                         startService(i);
                     }
                     else{
+                        if(glowscreen_toggle){
                         //If the Screen is Off
                         //Wake the Screen Up
                         PowerManager.WakeLock wakeLock = pwm.newWakeLock
                                 ((PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP), "TAG");
                         wakeLock.acquire();
-                        //Disable Keyguard
-                        KeyguardManager.KeyguardLock k1;
-                        KeyguardManager km =(KeyguardManager)getSystemService(KEYGUARD_SERVICE);
-                        k1= km.newKeyguardLock("IN");
-                        k1.disableKeyguard();
                         //Show GlowActivity
                         Log.d(DEBUGTAG, "Starting GlowActivity");
                         Intent a = new Intent(SysNotiDetectService.this, GlowActivity.class);
                         if(colormethod_int == 1){
                             a.putExtra("autocolorvalue", autocolor); //Color Value
-                            a.putExtra("notistring", event.getText().toString()); //Notification Text
                             a.putExtra("ParcelableData", event.getParcelableData());
+                            a.putExtra("pkgname", event.getPackageName());
                             a.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         }
                         else{
                             //Do Nothing
                         }
                         startActivity(a);
+                    }
+                        else{
+                            //Do Nothing
+                        }
                     }
                 }
             }

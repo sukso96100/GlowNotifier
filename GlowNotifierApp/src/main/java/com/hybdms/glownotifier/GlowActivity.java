@@ -3,15 +3,23 @@ package com.hybdms.glownotifier;
 import android.app.Activity;
 import android.app.KeyguardManager;
 import android.app.Notification;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.PixelFormat;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -19,18 +27,15 @@ import android.widget.TextView;
 public class GlowActivity extends Activity {
     private ImageView mGlowOverlay;
     String DEBUGTAG = "GlowActivity";
+    private WindowManager.LayoutParams mParams;
+    private WindowManager mWindowManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Flags for showing GlowActivity over lock screen
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_glow);
-
-        //Disable Keyguard
-        KeyguardManager.KeyguardLock k1;
-        KeyguardManager km =(KeyguardManager)getSystemService(KEYGUARD_SERVICE);
-        k1= km.newKeyguardLock("IN");
-        k1.disableKeyguard();
-
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB){
 
         }
@@ -48,7 +53,6 @@ public class GlowActivity extends Activity {
 
         int posentry_int = pref.getInt("posentry",0);
         int ratio_int = pref.getInt("ratiovalue", 5);
-     // int glowdelay_int = Integer.parseInt(pref.getString("delaytime", "5000"));
         int shape_int = pref.getInt("shapentry", 0);
         int colormethod_int = pref.getInt("colormethodentry", 0);
         int color_int ;
@@ -136,8 +140,8 @@ getIntent().getIntExtra("autocolorvalue", Color.WHITE);
         }
 
         mGlowOverlay.setImageDrawable(g);
-
         RelativeLayout rl = (RelativeLayout) findViewById(R.id.GlowScreenLayout);
+        /*
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
                 RelativeLayout.LayoutParams.WRAP_CONTENT,
                 RelativeLayout.LayoutParams.WRAP_CONTENT);
@@ -151,27 +155,75 @@ getIntent().getIntExtra("autocolorvalue", Color.WHITE);
             lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
         }
         rl.addView(mGlowOverlay, lp);
+        */
 
-        //Set Notification Text
-        TextView notitext = (TextView)findViewById(R.id.notitext);
-        String NotiString = getIntent().getStringExtra("notistring");
-        notitext.setText(NotiString);
+        //Get width and height from the image
+        int WRAP_CONTENT_WIDTH = mGlowOverlay.getDrawable().getIntrinsicWidth();
+        int WRAP_CONTENT_HEIGHT = mGlowOverlay.getDrawable().getIntrinsicHeight();
 
-        //Long Click Event
-        //Long Click Anywhere to launch event
+        //Settings for Overlay
+        mParams = new WindowManager.LayoutParams(
+                WRAP_CONTENT_WIDTH,
+                WRAP_CONTENT_HEIGHT,
+                WindowManager.LayoutParams.TYPE_TOAST,
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE //Not Focusable
+                        | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+                        | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, //GlowOverlay Never Receives Touch Input
+                PixelFormat.TRANSLUCENT);     //Transparent
+
+        //Gravity of The Overlay
+        if(posentry_int == 0){
+            //If posentry value is 0 (Top)
+            mParams.gravity = Gravity.TOP | Gravity.CENTER;
+        }
+        else{
+            //If posentry value is 1 (Bottom)
+            mParams.gravity = Gravity.BOTTOM | Gravity.CENTER;
+        }
+        //  mGlowOverlay.setScaleType(ImageView.ScaleType.FIT_XY);
+        mWindowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
+        mWindowManager.addView(mGlowOverlay, mParams);
+
+
         final Notification n = (Notification) getIntent().getParcelableExtra("ParcelableData");
-        rl.setOnLongClickListener(new View.OnLongClickListener() {
 
+        // Get App Icon
+        final PackageManager pm = getApplicationContext().getPackageManager();
+        ApplicationInfo ai;
+        try {
+            ai = pm.getApplicationInfo((String) getIntent().getStringExtra("pkgname"), 0);
+        } catch (final PackageManager.NameNotFoundException e) {
+            ai = null;
+        }
+        Drawable appicon = pm.getApplicationIcon(ai);
+        ImageView appiconfield = (ImageView)findViewById(R.id.appicon);
+        appiconfield.setImageDrawable(appicon);
+        appiconfield.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View v) {
+            public void onClick(View v) {
+                //disable keyguard
+                KeyguardManager km = (KeyguardManager)getSystemService(KEYGUARD_SERVICE);
+                KeyguardManager.KeyguardLock keylock = km.newKeyguardLock(KEYGUARD_SERVICE);
+                keylock.disableKeyguard();
                 try {
+                    //launch notification event
                     n.contentIntent.send();
+                    //finish activity
                     finish();
-                } catch (Exception e) {
+                } catch (PendingIntent.CanceledException e) {
+                    e.printStackTrace();
                     finish();
                 }
-                return false;
+            }
+        });
+        ImageView close = (ImageView)findViewById(R.id.close);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
+
+
 }

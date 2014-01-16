@@ -202,6 +202,11 @@ public class GlowOverlay extends Service {
         };
         mTimer = new Timer();
         mTimer.schedule(mTask, glowdelay_int);
+
+        //Remove the View
+        if(mWindowManager != null) {
+            if(mGlowOverlay != null) mWindowManager.removeView(mGlowOverlay);
+        }
     }
 
     @Override
@@ -212,4 +217,6 @@ public class GlowOverlay extends Service {
         }
         super.onDestroy();
     }
+
+
 }

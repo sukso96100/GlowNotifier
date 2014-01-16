@@ -107,19 +107,13 @@ public class SysNotificationListenerService extends NotificationListenerService 
                     PowerManager.WakeLock wakeLock = pwm.newWakeLock
                             ((PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP), "TAG");
                     wakeLock.acquire();
-                    //Disable Keyguard
-                    KeyguardManager.KeyguardLock k1;
-                    KeyguardManager km =(KeyguardManager)getSystemService(KEYGUARD_SERVICE);
-                    k1= km.newKeyguardLock("IN");
-                    k1.disableKeyguard();
                     //Show GlowActivity
                     Log.d(DEBUGTAG, "Starting GlowActivity");
-
                     Intent a = new Intent(SysNotificationListenerService.this, GlowActivity.class);
                     if(colormethod_int == 1){
                         a.putExtra("autocolorvalue", autocolor);
-                        a.putExtra("notistring", sbn.getNotification().tickerText);
                         a.putExtra("ParcelableData", sbn.getNotification());
+                        a.putExtra("pkgname", sbn.getPackageName());
                         a.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     }
                     else{

@@ -1,15 +1,10 @@
 package com.hybdms.glownotifier;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
+import android.widget.CheckBox;
 
 public class GlowScreenSettings extends ActionBarActivity {
 
@@ -18,48 +13,21 @@ public class GlowScreenSettings extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_glow_screen_settings);
 
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
-        }
+        SharedPreferences pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);
+        CheckBox toggle = (CheckBox)findViewById(R.id.toggle);
+        boolean toggle_boolean = pref.getBoolean("glowscreen_toggle", false);
+        toggle.setChecked(toggle_boolean);
+
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.glow_screen_settings, menu);
-        return true;
+    public void onStop(){
+        super.onStop();
+        //Save Preference Value
+        SharedPreferences pref = getSharedPreferences("pref", Activity.MODE_PRIVATE); // Save UI State
+        SharedPreferences.Editor editor = pref.edit(); // Load Editor
+        CheckBox toggle = (CheckBox)findViewById(R.id.toggle);
+        // Input values
+        editor.putBoolean("glowscreen_toggle", toggle.isChecked());
+        editor.commit(); // Save values
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_glow_screen_settings, container, false);
-            return rootView;
-        }
-    }
-
 }

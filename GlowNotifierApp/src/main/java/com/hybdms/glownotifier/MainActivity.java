@@ -111,6 +111,15 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        TextView glowscreen = (TextView)findViewById(R.id.glowscreen);
+        glowscreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent glowscreen = new Intent(MainActivity.this, GlowScreenSettings.class);
+                startActivity(glowscreen);
+            }
+        });
+
     }
 
     public void onStop(){
@@ -150,6 +159,27 @@ public class MainActivity extends ActionBarActivity {
         // Handle presses on the action bar items
         switch (item.getItemId()) {
             case R.id.action_preview:
+                //Stop GlowOverlay First
+                stopService(new Intent(this, GlowOverlay.class));
+                //Save Preference Value
+                SharedPreferences pref = getSharedPreferences("pref", Activity.MODE_PRIVATE); // Save UI State
+                SharedPreferences.Editor editor = pref.edit(); // Load Editor
+                Spinner posentry = (Spinner) findViewById(R.id.posentry);
+                Spinner sizentry = (Spinner) findViewById(R.id.sizentry);
+                Spinner shapentry = (Spinner) findViewById(R.id.shapentry);
+                EditText glowdelay = (EditText) findViewById(R.id.delaytime);
+                // Input values
+                int posentry_selected_value = posentry.getSelectedItemPosition();
+                int sizentry_selected_value = sizentry.getSelectedItemPosition();
+                int shapentry_selected_value = shapentry.getSelectedItemPosition();
+                String delaytime_edited_value = glowdelay.getText().toString();
+
+                editor.putInt("posentry", posentry_selected_value);
+                editor.putInt("ratiovalue", sizentry_selected_value);
+                editor.putInt("shapentry", shapentry_selected_value);
+                editor.putString("delaytime", delaytime_edited_value);
+                editor.commit(); // Save values
+                //Show GlowOverlay
                 startService(new Intent(this, GlowOverlay.class));
                 return true;
             default:
