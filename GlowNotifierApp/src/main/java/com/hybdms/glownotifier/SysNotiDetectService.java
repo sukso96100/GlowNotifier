@@ -20,7 +20,6 @@ package com.hybdms.glownotifier;
 
 import android.accessibilityservice.AccessibilityService;
 import android.accessibilityservice.AccessibilityServiceInfo;
-import android.app.KeyguardManager;
 import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
@@ -31,7 +30,6 @@ import android.database.Cursor;
 import android.graphics.drawable.Drawable;
 import android.os.Parcelable;
 import android.os.PowerManager;
-import android.os.SystemClock;
 import android.util.Log;
 import android.view.accessibility.AccessibilityEvent;
 
@@ -125,13 +123,13 @@ private String DEBUGTAG = "SysNotiDetectService";
                         Intent a = new Intent(SysNotiDetectService.this, GlowActivity.class);
                         if(colormethod_int == 1){
                             a.putExtra("autocolorvalue", autocolor); //Color Value
-                            a.putExtra("ParcelableData", event.getParcelableData());
-                            a.putExtra("pkgname", event.getPackageName());
-                            a.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         }
                         else{
                             //Do Nothing
                         }
+                        a.putExtra("ParcelableData", event.getParcelableData());
+                        a.putExtra("pkgname", event.getPackageName());
+                        a.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(a);
                     }
                         else{

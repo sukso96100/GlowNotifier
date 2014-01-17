@@ -24,7 +24,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
-import android.os.Bundle;
 import android.os.IBinder;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -58,8 +57,7 @@ public class GlowOverlay extends Service {
         SharedPreferences pref = getSharedPreferences("pref", Context.MODE_PRIVATE);
 
         int posentry_int = pref.getInt("posentry",0);
-        int ratio_int = pref.getInt("ratiovalue", 5);
-        int glowdelay_int = Integer.parseInt(pref.getString("delaytime", "5000"));
+        int ratio_int = pref.getInt("ratiovalue", 50);
         int shape_int = pref.getInt("shapentry", 0);
         int colormethod_int = pref.getInt("colormethodentry", 0);
         int color_int = 0;
@@ -77,40 +75,7 @@ public class GlowOverlay extends Service {
         int defaultdistance = devicewidth / 2;
 
         //change width ratio value by loaded pref value
-        double ratiovalue;
-        if(ratio_int == 0 ){
-            ratiovalue = 0.3;
-        }
-        else if(ratio_int == 1){
-            ratiovalue = 0.4;
-        }
-        else if(ratio_int == 2){
-            ratiovalue = 0.5;
-        }
-        else if(ratio_int == 3){
-            ratiovalue = 0.6;
-        }
-        else if(ratio_int == 4){
-            ratiovalue = 0.7;
-        }
-        else if(ratio_int == 5){
-            ratiovalue = 1.0;
-        }
-        else if(ratio_int == 6){
-            ratiovalue = 1.25;
-        }
-        else if(ratio_int == 7){
-            ratiovalue = 1.5;
-        }
-        else if(ratio_int == 8){
-            ratiovalue = 1.7;
-        }
-        else if(ratio_int == 9){
-            ratiovalue = 2.0;
-        }
-        else{
-            ratiovalue = 2.25;
-        }
+        double ratiovalue = ratio_int * 0.01;
 
         GradientDrawable g;
         if(shape_int == 0){
@@ -118,7 +83,7 @@ public class GlowOverlay extends Service {
             g = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]
                     { color_int, Color.argb(0, Color.red(color_int), Color.green(color_int), Color.blue(color_int)) });
             g.setGradientType(GradientDrawable.RADIAL_GRADIENT);
-            g.setGradientRadius((float) (defaultdistance * ratiovalue));
+            g.setGradientRadius((float) (devicewidth * ratiovalue));
         }
         else{
             //Linear Gradient Drawable
@@ -132,7 +97,7 @@ public class GlowOverlay extends Service {
             g = new GradientDrawable(linear_orientation, new int[]
                     { color_int, Color.argb(0, Color.red(color_int), Color.green(color_int), Color.blue(color_int)) });
             g.setGradientType(GradientDrawable.LINEAR_GRADIENT);
-            g.setSize(devicewidth, (int) (defaultdistance * ratiovalue));
+            g.setSize(devicewidth, (int) (devicewidth * ratiovalue));
         }
 
         if(posentry_int == 0){
@@ -173,17 +138,6 @@ public class GlowOverlay extends Service {
         mWindowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         mWindowManager.addView(mGlowOverlay, mParams);
 
-        // Stop this Service in a few seconds
-        /*
-        mTask = new TimerTask() {
-            @Override
-            public void run() {
-                stopSelf();
-            }
-        };
-        mTimer = new Timer();
-        mTimer.schedule(mTask, glowdelay_int);
-        */
         return super.onStartCommand(intent, flags, startId);
     }
 

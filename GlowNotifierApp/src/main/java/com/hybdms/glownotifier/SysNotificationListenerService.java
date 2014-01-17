@@ -19,7 +19,6 @@
 package com.hybdms.glownotifier;
 
 import android.annotation.TargetApi;
-import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -112,13 +111,13 @@ public class SysNotificationListenerService extends NotificationListenerService 
                     Intent a = new Intent(SysNotificationListenerService.this, GlowActivity.class);
                     if(colormethod_int == 1){
                         a.putExtra("autocolorvalue", autocolor);
-                        a.putExtra("ParcelableData", sbn.getNotification());
-                        a.putExtra("pkgname", sbn.getPackageName());
-                        a.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     }
                     else{
                         //Do Nothing
                     }
+                    a.putExtra("ParcelableData", sbn.getNotification());
+                    a.putExtra("pkgname", sbn.getPackageName());
+                    a.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(a);
                 }
             }

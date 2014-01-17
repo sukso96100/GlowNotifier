@@ -129,7 +129,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         android:entries="@array/posentry"
         android:background="@drawable/cardbg"
         android:padding="10dp"/>
-    <TextView
+
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/size"
@@ -137,13 +138,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         android:padding="5dp"
         android:layout_marginTop="10dp"/>
 
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/sizentry"
-        android:entries="@array/sizentry"
-        android:background="@drawable/cardbg"
-        android:padding="10dp"/>
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sizeseekbar"
+            android:background="@drawable/cardbg"
+            android:padding="10dp"
+            android:max="100"
+            android:progress="50"/>
 
         <TextView
             android:layout_width="wrap_content"

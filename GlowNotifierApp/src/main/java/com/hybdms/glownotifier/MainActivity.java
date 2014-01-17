@@ -30,6 +30,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.os.Build;
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -43,16 +44,16 @@ public class MainActivity extends ActionBarActivity {
         // Load Preference Value
         SharedPreferences pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);
         Spinner posentry = (Spinner) findViewById(R.id.posentry);  //posentry spinner
-        Spinner sizentry = (Spinner) findViewById(R.id.sizentry); //widthentry spinner
+        SeekBar sizesekkbar = (SeekBar)findViewById(R.id.sizeseekbar);
         Spinner shapentry = (Spinner) findViewById(R.id.shapentry); //heightentry spinner
         EditText glowdleay = (EditText) findViewById(R.id.delaytime); //delaytime Edittext
         int posentry_int = pref.getInt("posentry",0);
-        int sizentry_int = pref.getInt("ratiovalue", 5);
+        int sizesekkbar_int = pref.getInt("ratiovalue", 50);
         int shapentry_int = pref.getInt("shapentry", 0);
 
         String delaytime_String = pref.getString("delaytime", "5000");
         posentry.setSelection(posentry_int);
-        sizentry.setSelection(sizentry_int);
+        sizesekkbar.setProgress(sizesekkbar_int);
         shapentry.setSelection(shapentry_int);
         glowdleay.setText(delaytime_String);
 
@@ -129,17 +130,17 @@ public class MainActivity extends ActionBarActivity {
         SharedPreferences pref = getSharedPreferences("pref", Activity.MODE_PRIVATE); // Save UI State
         SharedPreferences.Editor editor = pref.edit(); // Load Editor
         Spinner posentry = (Spinner) findViewById(R.id.posentry);
-        Spinner sizentry = (Spinner) findViewById(R.id.sizentry);
+        SeekBar sizeseekbar = (SeekBar) findViewById(R.id.sizeseekbar);
         Spinner shapentry = (Spinner) findViewById(R.id.shapentry);
         EditText glowdelay = (EditText) findViewById(R.id.delaytime);
         // Input values
         int posentry_selected_value = posentry.getSelectedItemPosition();
-        int sizentry_selected_value = sizentry.getSelectedItemPosition();
+        int sizeseekbar_progress_value = sizeseekbar.getProgress();
         int shapentry_selected_value = shapentry.getSelectedItemPosition();
         String delaytime_edited_value = glowdelay.getText().toString();
 
         editor.putInt("posentry", posentry_selected_value);
-        editor.putInt("ratiovalue", sizentry_selected_value);
+        editor.putInt("ratiovalue", sizeseekbar_progress_value);
         editor.putInt("shapentry", shapentry_selected_value);
         editor.putString("delaytime", delaytime_edited_value);
         editor.commit(); // Save values
@@ -165,17 +166,17 @@ public class MainActivity extends ActionBarActivity {
                 SharedPreferences pref = getSharedPreferences("pref", Activity.MODE_PRIVATE); // Save UI State
                 SharedPreferences.Editor editor = pref.edit(); // Load Editor
                 Spinner posentry = (Spinner) findViewById(R.id.posentry);
-                Spinner sizentry = (Spinner) findViewById(R.id.sizentry);
+                SeekBar sizeseekbar = (SeekBar) findViewById(R.id.sizeseekbar);
                 Spinner shapentry = (Spinner) findViewById(R.id.shapentry);
                 EditText glowdelay = (EditText) findViewById(R.id.delaytime);
                 // Input values
                 int posentry_selected_value = posentry.getSelectedItemPosition();
-                int sizentry_selected_value = sizentry.getSelectedItemPosition();
+                int sizeseekbar_progress_value = sizeseekbar.getProgress();
                 int shapentry_selected_value = shapentry.getSelectedItemPosition();
                 String delaytime_edited_value = glowdelay.getText().toString();
 
                 editor.putInt("posentry", posentry_selected_value);
-                editor.putInt("ratiovalue", sizentry_selected_value);
+                editor.putInt("ratiovalue", sizeseekbar_progress_value);
                 editor.putInt("shapentry", shapentry_selected_value);
                 editor.putString("delaytime", delaytime_edited_value);
                 editor.commit(); // Save values

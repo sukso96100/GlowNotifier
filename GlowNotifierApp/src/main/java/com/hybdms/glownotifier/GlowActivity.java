@@ -5,36 +5,30 @@ import android.app.KeyguardManager;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 public class GlowActivity extends Activity {
     private ImageView mGlowOverlay;
     String DEBUGTAG = "GlowActivity";
-    private WindowManager.LayoutParams mParams;
-    private WindowManager mWindowManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Flags for showing GlowActivity over lock screen
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
         setContentView(R.layout.activity_glow);
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB){
 
@@ -52,7 +46,7 @@ public class GlowActivity extends Activity {
         SharedPreferences pref = getSharedPreferences("pref", Context.MODE_PRIVATE);
 
         int posentry_int = pref.getInt("posentry",0);
-        int ratio_int = pref.getInt("ratiovalue", 5);
+        int ratio_int = pref.getInt("ratiovalue", 50);
         int shape_int = pref.getInt("shapentry", 0);
         int colormethod_int = pref.getInt("colormethodentry", 0);
         int color_int ;
@@ -70,49 +64,17 @@ public class GlowActivity extends Activity {
         int defaultdistance = devicewidth / 2;
 
         //change width ratio value by loaded pref value
-        double ratiovalue;
-        if(ratio_int == 0 ){
-            ratiovalue = 0.3;
-        }
-        else if(ratio_int == 1){
-            ratiovalue = 0.4;
-        }
-        else if(ratio_int == 2){
-            ratiovalue = 0.5;
-        }
-        else if(ratio_int == 3){
-            ratiovalue = 0.6;
-        }
-        else if(ratio_int == 4){
-            ratiovalue = 0.7;
-        }
-        else if(ratio_int == 5){
-            ratiovalue = 1.0;
-        }
-        else if(ratio_int == 6){
-            ratiovalue = 1.25;
-        }
-        else if(ratio_int == 7){
-            ratiovalue = 1.5;
-        }
-        else if(ratio_int == 8){
-            ratiovalue = 1.7;
-        }
-        else if(ratio_int == 9){
-            ratiovalue = 2.0;
-        }
-        else{
-            ratiovalue = 2.25;
-        }
+        double ratiovalue = ratio_int * 0.01;
+
 getIntent().getIntExtra("autocolorvalue", Color.WHITE);
         GradientDrawable g;
         if(shape_int == 0){
             //Circular Gradient Drawable
             Log.d(DEBUGTAG, "Circular Gradient Drawable");
             g = new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM, new int[]
-                    { color_int, Color.argb(0, Color.red(color_int), Color.green(color_int), Color.blue(color_int)) });
+                    { color_int, Color.BLACK });
             g.setGradientType(GradientDrawable.RADIAL_GRADIENT);
-            g.setGradientRadius((float) (defaultdistance * ratiovalue));
+            g.setGradientRadius((float) (devicewidth * ratiovalue));
         }
         else{
             //Linear Gradient Drawable
@@ -125,9 +87,9 @@ getIntent().getIntExtra("autocolorvalue", Color.WHITE);
                 linear_orientation = GradientDrawable.Orientation.BOTTOM_TOP;
             }
             g = new GradientDrawable(linear_orientation, new int[]
-                    { color_int, Color.argb(0, Color.red(color_int), Color.green(color_int), Color.blue(color_int)) });
+                    { color_int, Color.BLACK });
             g.setGradientType(GradientDrawable.LINEAR_GRADIENT);
-            g.setSize(devicewidth, (int) (defaultdistance * ratiovalue));
+            g.setSize(devicewidth, (int) (devicewidth * ratiovalue));
         }
 
         if(posentry_int == 0){
@@ -141,49 +103,12 @@ getIntent().getIntExtra("autocolorvalue", Color.WHITE);
 
         mGlowOverlay.setImageDrawable(g);
         RelativeLayout rl = (RelativeLayout) findViewById(R.id.GlowScreenLayout);
-        /*
-        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT);
-        //Gravity of The Overlay
-        if(posentry_int == 0){
-            //If posentry value is 0 (Top)
-            lp.addRule(RelativeLayout.ALIGN_TOP);
-        }
-        else{
-            //If posentry value is 1 (Bottom)
-            lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        }
-        rl.addView(mGlowOverlay, lp);
-        */
 
-        //Get width and height from the image
-        int WRAP_CONTENT_WIDTH = mGlowOverlay.getDrawable().getIntrinsicWidth();
-        int WRAP_CONTENT_HEIGHT = mGlowOverlay.getDrawable().getIntrinsicHeight();
-
-        //Settings for Overlay
-        mParams = new WindowManager.LayoutParams(
-                WRAP_CONTENT_WIDTH,
-                WRAP_CONTENT_HEIGHT,
-                WindowManager.LayoutParams.TYPE_TOAST,
-                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE //Not Focusable
-                        | WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
-                        | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, //GlowOverlay Never Receives Touch Input
-                PixelFormat.TRANSLUCENT);     //Transparent
-
-        //Gravity of The Overlay
-        if(posentry_int == 0){
-            //If posentry value is 0 (Top)
-            mParams.gravity = Gravity.TOP | Gravity.CENTER;
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN){
+            rl.setBackgroundDrawable(g);
+        }else{
+            rl.setBackground(g);
         }
-        else{
-            //If posentry value is 1 (Bottom)
-            mParams.gravity = Gravity.BOTTOM | Gravity.CENTER;
-        }
-        //  mGlowOverlay.setScaleType(ImageView.ScaleType.FIT_XY);
-        mWindowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
-        mWindowManager.addView(mGlowOverlay, mParams);
-
 
         final Notification n = (Notification) getIntent().getParcelableExtra("ParcelableData");
 
@@ -224,6 +149,4 @@ getIntent().getIntExtra("autocolorvalue", Color.WHITE);
             }
         });
     }
-
-
 }
