@@ -12,22 +12,25 @@
         android:id="@+id/close"
         android:src="@drawable/ic_action_remove"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"/>
+        android:layout_marginTop="30dp"/>
 
     <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:id="@+id/appicon"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:scaleType="fitXY"
         android:src="@drawable/ic_launcher"/>
 
-    <AnalogClock
+    <view
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/analogClock"
+        class="com.hybdms.glownotifier.clock.AnalogClock"
+        android:id="@+id/view"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitXY"/>
+
 
 </RelativeLayout>

@@ -23,4 +23,10 @@
 
     <style name="ButtonBarButton" />
 
+    <style name="clock">
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+    </style>
+
 </resources>

@@ -9,4 +9,10 @@
         <attr name="metaButtonBarButtonStyle" format="reference" />
     </declare-styleable>
 
-</resources>
+    <declare-styleable name="AnalogClock">
+        <attr name="dial" format="reference"/>
+        <attr name="hand_hour" format="reference"/>
+        <attr name="hand_minute" format="reference"/>
+    </declare-styleable>
+    </resources>
+
