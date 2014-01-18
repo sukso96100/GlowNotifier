@@ -81,8 +81,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="pick_color_fixed">Pick Fixed Color</string>
     <string name="translate">Help Translating This App</string>
     <string name="title_activity_glow">GlowActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_glow_screen_settings">Glow Screen Settings</string>
     <string name="glowscreen_toggle">Use Glow Screen</string>
     <string name="glowscreen_desc">If you turn this feature on,

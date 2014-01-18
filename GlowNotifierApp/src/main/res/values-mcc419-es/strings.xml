@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <!--
+GlowNotifier Application for Android
+Copyright (C) 2013 Youngbin Han<sukso96100@gmail.com>
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<resources>
+    <string name="app_name">GlowNotifier</string>
+    <string name="hello_world">¡Hola mundo!</string>
+    <string name="action_preview">Guardar y previsualizar</string>
+    <string name="action_new">Añadir</string>
+    <string name="service_and_info">Activación del servicio e información de la aplicación</string>
+    <string name="accessibility">Configuración del servicio de detección de notificaciones</string>
+    <string name="appinfo">Acerca de la aplicación</string>
+    <string name="app_settings">Configurar la aplicación</string>
+    <string name="color">Seleccionar color</string>
+    <string name="pos">Posición del resplandor</string>
+    <string-array name="posentry">
+        <item>Arriba</item>
+        <item>Abajo</item>
+    </string-array>
+    <string name="update">Buscar actualizaciones en Google Play</string>
+    <string name="src">Obtén el código fuente completo en GitHub</string>
+    <string name="tutorial">Tutorial</string>
+    <string name="legal">Aviso legal</string>
+    <string name="sysnotidetectservice">Servicio de detección de notificación del sistema</string>
+    <string name="sysnotidetectservice_desc">GlowNotifier : Servicio de detección de notificación del sistema - Active este servicion de Accesibilidad para habilitar la función.</string>
+    <string name="title_activity_tutorial">Tutorial</string>
+    <string name="tutorial_0">Iniciar</string>
+    <string name="tutorial_0_0">Deslice desde la derecha para continuar</string>
+    <string name="tutorial_1">Activando</string>
+    <string name="tutorial_1_0">Active el servicio para habilitar la función.</string>
+    <string name="tutorial_1_1">Active el servicio</string>
+    <string name="tutorial_2">Personalización</string>
+    <string name="tutorial_2_0">Puede personalizar el color, la posición, tamaño del resplandor.</string>
+    <string name="tutorial_done">¡Listo!</string>
+    <string name="size">Tamaño del resplandor:</string>
+    <string name="shape">Forma del resplandor :</string>
+    <string-array name="shapentry">
+        <item>Degradado Circular(predeterminado)</item>
+        <item>Degradado lineal</item>
+    </string-array>
+    <string name="visit">Visita la página web de GlowNotifier</string>
+    <string name="blog">Visita el Blog del desarrollador</string>
+    <string name="glow_delay">Duración del resplandor(Milisegundos predeterminados: 5000(5s)) :</string>
+    <string name="sysnotilistenerservice">GlowNotifier : Detector de notificación</string>
+    <string name="title_activity_blacklist">Lista de notificaciones ignoradas</string>
+    <string name="action_settings">Configuración</string>
+    <string name="title_activity_blacklist__addnew">Añadir</string>
+    <string name="db_alreayexist">Ya esta en la lista de ignoradas.</string>
+    <string name="db_removed">Eliminado de la lista de ignorados</string>
+    <string name="blacklist_info">No se mostrará resplandor para 
+las notificaciones de las aplicaciones ignoradas 
+Mantenga pulsado sobre la aplicación, para eliminarla de la lista de ignorados.</string>
+    <string name="title_activity_color_settings">Configurar el color del resplandor</string>
+    <string name="color_method">Método de selección del color :</string>
+    <string-array name="color_method_entry">
+        <item>Color fijo</item>
+        <item>Selección de color automatica</item>
+    </string-array>
+    <string name="pick_color_fixed">Seleccione el color fijo</string>
+    <string name="translate">Ayuda a traducir esta aplicación.</string>
+    <string name="title_activity_glow">GlowActivity</string>
+    <string name="dummy_content">\nContenido</string>
+    <string name="title_activity_glow_screen_settings">Configuración de Glow Screen</string>
+    <string name="glowscreen_toggle">Usar Glow Screen</string>
+    <string name="glowscreen_desc">Si Ud activa esta función,
+su dispositivo podria despertar del reposo y mostrar información sobre la notificación detectada.</string>
+    <string name="glowscreen_clockkinds">Tipos de relojes para Glow Screen :</string>
+    <string-array name="glowscreen_clockkinds_entry">
+        <item>Reloj digital</item>
+        <item>Reloj analógico</item>
+    </string-array>
+</resources>
