@@ -29,7 +29,29 @@ public class GlowActivity extends Activity {
         super.onCreate(savedInstanceState);
         //Flags for showing GlowActivity over lock screen
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
-        setContentView(R.layout.activity_glow);
+        //Load Preference Value
+        SharedPreferences pref = getSharedPreferences("pref", Context.MODE_PRIVATE);
+
+        int posentry_int = pref.getInt("posentry",0);
+        int ratio_int = pref.getInt("ratiovalue", 50);
+        int shape_int = pref.getInt("shapentry", 0);
+        int colormethod_int = pref.getInt("colormethodentry", 0);
+        int color_int ;
+        int clockkinds_int = pref.getInt("clockkinds", 0);
+        //Load Color Value
+        if(colormethod_int == 0){
+            color_int = pref.getInt("colorvalue", Color.WHITE);
+        }
+        else{
+            color_int = getIntent().getIntExtra("autocolorvalue", Color.WHITE);
+        }
+        //Clock Kinds
+        if(clockkinds_int == 0){
+            setContentView(R.layout.activity_glow);
+        }else{
+            setContentView(R.layout.activity_glow_analog);
+        }
+
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB){
 
         }
@@ -42,26 +64,11 @@ public class GlowActivity extends Activity {
         //Create Image View
         mGlowOverlay = new ImageView(this);
 
-        //Load Preference Value
-        SharedPreferences pref = getSharedPreferences("pref", Context.MODE_PRIVATE);
 
-        int posentry_int = pref.getInt("posentry",0);
-        int ratio_int = pref.getInt("ratiovalue", 50);
-        int shape_int = pref.getInt("shapentry", 0);
-        int colormethod_int = pref.getInt("colormethodentry", 0);
-        int color_int ;
-        //Load Color Value
-        if(colormethod_int == 0){
-            color_int = pref.getInt("colorvalue", Color.WHITE);
-        }
-        else{
-            color_int = getIntent().getIntExtra("autocolorvalue", Color.WHITE);
-        }
 
         //Get Device Screen Width Value
         DisplayMetrics metrics = getApplicationContext().getResources().getDisplayMetrics();
         int devicewidth = metrics.widthPixels;
-        int defaultdistance = devicewidth / 2;
 
         //change width ratio value by loaded pref value
         double ratiovalue = ratio_int * 0.01;

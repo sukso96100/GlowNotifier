@@ -72,7 +72,6 @@ public class GlowOverlay extends Service {
         //Get Device Screen Width Value
         DisplayMetrics metrics = getApplicationContext().getResources().getDisplayMetrics();
         int devicewidth = metrics.widthPixels;
-        int defaultdistance = devicewidth / 2;
 
         //change width ratio value by loaded pref value
         double ratiovalue = ratio_int * 0.01;

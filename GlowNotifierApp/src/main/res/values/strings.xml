@@ -51,20 +51,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="tutorial_done">Done!</string>
     <string name="size">Size of Glow :</string>
 
-    <string-array name="sizentry">
-        <item>default * 0.3</item>
-        <item>default * 0.4</item>
-        <item>default * 0.5</item>
-        <item>default * 0.6</item>
-        <item>default * 0.7</item>
-        <item>default</item>
-        <item>default * 1.25</item>
-        <item>default * 1.5</item>
-        <item>default * 1.75</item>
-        <item>default * 2.0</item>
-        <item>default * 2.25</item>
-    </string-array>
-
     <string name="shape">Shape of Glow :</string>
 
     <string-array name="shapentry">
@@ -98,7 +84,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_glow_screen_settings">Glow Screen Settings</string>
-    <string name="glowscreen_toggle">Use Glow Screen\n
-    (This will wake your device up from sleep and show you some information about the notification that just detected)</string>
+    <string name="glowscreen_toggle">Use Glow Screen</string>
+    <string name="glowscreen_desc">If you turn this feature on,
+        it will wake your device up from sleep and show you some information about the notification that just detected</string>
+    <string name="glowscreen_clockkinds">Kinds of Clock for Glow Screen :</string>
+    <string-array name="glowscreen_clockkinds_entry">
+        <item>Digital Clock</item>
+        <item>Analog Clock</item>
+    </string-array>
 
 </resources>

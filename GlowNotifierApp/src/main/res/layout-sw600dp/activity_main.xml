@@ -97,6 +97,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                     android:background="@drawable/cardbg"
                     android:padding="10dp"
                     android:layout_marginTop="10dp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="@string/title_activity_glow_screen_settings"
+                    android:id="@+id/glowscreen"
+                    android:background="@drawable/cardbg"
+                    android:padding="10dp"
+                    android:layout_marginTop="10dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -121,13 +130,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                     android:padding="5dp"
                     android:layout_marginTop="10dp"/>
 
-                <Spinner
+                <SeekBar
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/sizentry"
-                    android:entries="@array/sizentry"
+                    android:id="@+id/sizeseekbar"
                     android:background="@drawable/cardbg"
-                    android:padding="10dp"/>
+                    android:padding="10dp"
+                    android:max="100"
+                    android:progress="50"/>
 
             </LinearLayout>
             <LinearLayout android:layout_width="0dp"

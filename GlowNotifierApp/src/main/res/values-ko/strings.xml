@@ -53,20 +53,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     <string name="size">알림빛 크기 :</string>
 
-    <string-array name="sizentry">
-        <item>기본값 * 0.3</item>
-        <item>기본값 * 0.4</item>
-        <item>기본값 * 0.5</item>
-        <item>기본값 * 0.6</item>
-        <item>기본값 * 0.7</item>
-        <item>기본값</item>
-        <item>기본값 * 1.25</item>
-        <item>기본값 * 1.5</item>
-        <item>기본값 * 1.75</item>
-        <item>기본값 * 2.0</item>
-        <item>기본값 * 2.25</item>
-    </string-array>
-
     <string name="shape">알림빛 모양 :</string>
 
     <string-array name="shapentry">
@@ -95,7 +81,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="pick_color_fixed">고정 색상 선택</string>
     <string name="translate">이 앱 번역 돕기</string>
     <string name="title_activity_glow_screen_settings">알림빛화면 설정</string>
-    <string name="glowscreen_toggle">알림빛화면 사용하기\n
-    (화면이 꺼져있는 경우, 알림이 새로 감지되면 화면을 자동으로 켜고 알림에 대한 간단한 내용을 보여줍니다.)</string>
-
+    <string name="glowscreen_toggle">알림빛화면 사용하기</string>
+    <string name="glowscreen_desc">이 기능을 켜면, 화면이 꺼져있는 경우, 알림이 새로 감지되면 화면을 자동으로 켜고 알림에 대한 간단한 내용을 보여줍니다.</string>
+    <string name="glowscreen_clockkinds">알림빛화면 시계종류 :</string>
+    <string-array name="glowscreen_clockkinds_entry">
+        <item>디지털 시계</item>
+        <item>아날로그 시계</item>
+    </string-array>
 </resources>

@@ -38,5 +38,31 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             android:id="@+id/toggle"
             android:background="@drawable/cardbg"
             android:padding="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/glowscreen_desc"
+            android:id="@+id/desc"
+            android:background="@drawable/cardbg"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/glowscreen_clockkinds"
+            android:id="@+id/textView6"
+            android:padding="5dp"
+            android:layout_marginTop="10dp"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/clockkindsentry"
+            android:entries="@array/glowscreen_clockkinds_entry"
+            android:background="@drawable/cardbg"
+            android:padding="10dp"/>
     </LinearLayout>
 </ScrollView>
