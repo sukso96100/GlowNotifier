@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.KeyguardManager;
 import android.app.Notification;
 import android.app.PendingIntent;
+import android.app.admin.DevicePolicyManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
@@ -13,6 +14,8 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PowerManager;
+import android.os.SystemClock;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -20,15 +23,21 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class GlowActivity extends Activity {
     private ImageView mGlowOverlay;
     String DEBUGTAG = "GlowActivity";
+    private TimerTask mTask;
+    private Timer mTimer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Flags for showing GlowActivity over lock screen
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED  | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
         //Load Preference Value
         SharedPreferences pref = getSharedPreferences("pref", Context.MODE_PRIVATE);
 
@@ -38,6 +47,8 @@ public class GlowActivity extends Activity {
         int colormethod_int = pref.getInt("colormethodentry", 0);
         int color_int ;
         int clockkinds_int = pref.getInt("clockkinds", 0);
+        final boolean closetoggle_boolean = pref.getBoolean("closeglowscreen_toggle", true);
+        int glowdelay_int = Integer.parseInt(pref.getString("delaytime", "30000"));
         //Load Color Value
         if(colormethod_int == 0){
             color_int = pref.getInt("colorvalue", Color.WHITE);
@@ -60,11 +71,12 @@ public class GlowActivity extends Activity {
             int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
             decorView.setSystemUiVisibility(uiOptions);
         }
+        //Device Policy Manager
+        final DevicePolicyManager mDPM =
+                (DevicePolicyManager)getSystemService(Context.DEVICE_POLICY_SERVICE);
 
         //Create Image View
         mGlowOverlay = new ImageView(this);
-
-
 
         //Get Device Screen Width Value
         DisplayMetrics metrics = getApplicationContext().getResources().getDisplayMetrics();
@@ -155,5 +167,32 @@ getIntent().getIntExtra("autocolorvalue", Color.WHITE);
                 finish();
             }
         });
+
+        if(glowdelay_int == 0){
+            //Do Nothing
+        }
+        else{
+            // Stop this Activity in a few seconds
+            mTask = new TimerTask() {
+                @Override
+                public void run() {
+                    //Turn the Screen Off
+                    /*
+                    PowerManager.WakeLock wakeLock = pwm.newWakeLock
+                            (PowerManager.PARTIAL_WAKE_LOCK, "TAG");
+                    wakeLock.acquire();
+                    wakeLock.release();
+                    */
+                    mDPM.lockNow();
+                    if(closetoggle_boolean){
+                        finish();
+                    }else{
+                        //Do Nothing
+                    }
+                }
+            };
+            mTimer = new Timer();
+            mTimer.schedule(mTask, glowdelay_int);
+        }
     }
 }

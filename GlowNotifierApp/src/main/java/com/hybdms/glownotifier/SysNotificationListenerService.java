@@ -49,6 +49,7 @@ public class SysNotificationListenerService extends NotificationListenerService 
         //Load Preference Value
         SharedPreferences pref = getSharedPreferences("pref", Context.MODE_PRIVATE);
         int colormethod_int = pref.getInt("colormethodentry", 0);
+        boolean glowscreen_toggle = pref.getBoolean("glowscreen_toggle", true);
 
         // Load BlackList
         mHelper = new BlacklistDBhelper(this);
@@ -101,6 +102,7 @@ public class SysNotificationListenerService extends NotificationListenerService 
                     startService(i);
                 }
                 else{
+                    if(glowscreen_toggle){
                     //If the Screen is Off
                     //Wake the Screen Up
                     PowerManager.WakeLock wakeLock = pwm.newWakeLock
@@ -119,6 +121,10 @@ public class SysNotificationListenerService extends NotificationListenerService 
                     a.putExtra("pkgname", sbn.getPackageName());
                     a.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(a);
+                    }
+                    else{
+                        //Do Nothing
+                    }
                 }
             }
         }

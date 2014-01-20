@@ -64,5 +64,49 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             android:entries="@array/glowscreen_clockkinds_entry"
             android:background="@drawable/cardbg"
             android:padding="10dp"/>
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/glowscreen_autoscreenoff"
+            android:id="@+id/screenoff"
+            android:background="@drawable/cardbg"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/glowscreen_deviceadmin"
+            android:id="@+id/admindesc"
+            android:background="@drawable/cardbg"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/glowscreen_delay"
+            android:id="@+id/textView6"
+            android:padding="5dp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="10"
+            android:id="@+id/delaytime"
+            android:background="@drawable/cardbg"
+            android:padding="10dp"/>
+
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/glowscreen_close"
+            android:id="@+id/closetoggle"
+            android:background="@drawable/cardbg"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"/>
+
     </LinearLayout>
 </ScrollView>

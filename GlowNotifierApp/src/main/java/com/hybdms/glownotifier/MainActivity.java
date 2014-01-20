@@ -46,16 +46,16 @@ public class MainActivity extends ActionBarActivity {
         Spinner posentry = (Spinner) findViewById(R.id.posentry);  //posentry spinner
         SeekBar sizesekkbar = (SeekBar)findViewById(R.id.sizeseekbar);
         Spinner shapentry = (Spinner) findViewById(R.id.shapentry); //heightentry spinner
-        EditText glowdleay = (EditText) findViewById(R.id.delaytime); //delaytime Edittext
+        EditText glowdelay = (EditText) findViewById(R.id.delaytime); //delaytime Edittext
         int posentry_int = pref.getInt("posentry",0);
         int sizesekkbar_int = pref.getInt("ratiovalue", 50);
         int shapentry_int = pref.getInt("shapentry", 0);
-
         String delaytime_String = pref.getString("delaytime", "5000");
+
         posentry.setSelection(posentry_int);
         sizesekkbar.setProgress(sizesekkbar_int);
         shapentry.setSelection(shapentry_int);
-        glowdleay.setText(delaytime_String);
+        glowdelay.setText(delaytime_String);
 
         //Launch Tutorial Activity If user new to this app
         Boolean firstrun = pref.getBoolean("firstrun", true);

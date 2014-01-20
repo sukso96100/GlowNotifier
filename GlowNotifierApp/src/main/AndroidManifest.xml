@@ -27,7 +27,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"></uses-permission>
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
 
     <application
         android:allowBackup="true"
@@ -141,9 +141,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         </activity>
         <activity
             android:name="com.hybdms.glownotifier.GlowActivity"
+            android:excludeFromRecents="true"
             android:label="@string/title_activity_glow"
-            android:theme="@style/Theme.Gray.FullScreen"
-            android:excludeFromRecents="true">
+            android:theme="@style/Theme.Gray.FullScreen" >
         </activity>
         <activity
             android:name="com.hybdms.glownotifier.GlowScreenSettings"
@@ -153,6 +153,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.hybdms.glownotifier.MainActivity" />
         </activity>
+
+        <receiver
+            android:name="com.hybdms.glownotifier.DevicePolicyReceiver"
+            android:permission="android.permission.BIND_DEVICE_ADMIN"
+            android:label="@string/deviceadmin_label"
+            android:description="@string/deviceadmin_desc">
+            <meta-data android:name="android.app.device_admin"
+                android:resource="@xml/deviceadmin_config" />
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>

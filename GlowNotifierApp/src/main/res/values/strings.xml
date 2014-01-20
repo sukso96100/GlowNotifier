@@ -60,7 +60,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     <string name="visit">Visit GlowNotifier Website</string>
     <string name="blog">Visit Developer\'\ s Blog</string>
-    <string name="glow_delay">Glow Delay Time(Milliseconds-default : 5000(5sec)) :</string>
+    <string name="glow_delay">Glow Delay Time(Milliseconds/5000(5sec):Default) :</string>
     <string name="sysnotilistenerservice">GlowNotifier : Notification Detector</string>
     <string name="title_activity_blacklist">Notification Blacklist</string>
     <string name="action_settings">Settings</string>
@@ -92,5 +92,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <item>Digital Clock</item>
         <item>Analog Clock</item>
     </string-array>
-
+    <string name="glowscreen_delay">Glow Screen Delay Time(Milliseconds)\n
+    (0:Keep Screen On 30000(30sec):Default) :</string>
+    <string name="glowscreen_close">Close Glow Screen Automatically When Turning Screen Off</string>
+    <string name="deviceadmin_on">Device Administration is On.\n
+    If you are not using the feature "GlowNotifier : Glow Screen - Turn Off Screen Automatically"
+    or trying to uninstall this app, Turn Device Administration Off First</string>
+    <string name="deviceadmin_off">Device Administration is Off</string>
+    <string name="glowscreen_deviceadmin">Device Administration Settings(Turn it On before enabling Screen Off feature)</string>
+    <string name="glowscreen_autoscreenoff">Turn the Screen Off Automatically</string>
+    <string name="deviceadmin_label">GlowNotifier : Turn Screen Off Automatically</string>
+    <string name="deviceadmin_desc">Turn this on to turn off screen automatically after Glow Screen appeared</string>
 </resources>
