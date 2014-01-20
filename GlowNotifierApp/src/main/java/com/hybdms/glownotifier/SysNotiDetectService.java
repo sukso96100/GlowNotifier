@@ -129,7 +129,7 @@ private String DEBUGTAG = "SysNotiDetectService";
                         }
                         a.putExtra("ParcelableData", event.getParcelableData());
                         a.putExtra("pkgname", event.getPackageName());
-                        a.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        a.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK + Intent.FLAG_ACTIVITY_NO_HISTORY);
                         startActivity(a);
                     }
                         else{

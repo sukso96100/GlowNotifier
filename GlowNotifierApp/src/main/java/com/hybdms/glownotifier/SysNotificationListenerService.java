@@ -119,7 +119,7 @@ public class SysNotificationListenerService extends NotificationListenerService 
                     }
                     a.putExtra("ParcelableData", sbn.getNotification());
                     a.putExtra("pkgname", sbn.getPackageName());
-                    a.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    a.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK + Intent.FLAG_ACTIVITY_NO_HISTORY);
                     startActivity(a);
                     }
                     else{
