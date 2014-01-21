@@ -49,6 +49,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="tutorial_1_1">서비스 켜기</string>
     <string name="tutorial_2">개인화</string>
     <string name="tutorial_2_0">알림 빛의 색상, 위치 등을 개인화 하실 수 있습니다</string>
+    <string name="tutorial_3">화면 꺼졌을때도 알림받기</string>
+    <string name="tutorial_3_0">알림빛화면 기능을 켜면,\n
+        화면이 꺼져있어도 알림을 받을 수 있습니다.</string>
     <string name="tutorial_done">끝!</string>
 
     <string name="size">알림빛 크기 :</string>

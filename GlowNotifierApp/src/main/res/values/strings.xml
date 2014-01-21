@@ -48,6 +48,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="tutorial_1_1">Turn the Service On</string>
     <string name="tutorial_2">Customization</string>
     <string name="tutorial_2_0">You can customize the color, position, more of the Glow</string>
+    <string name="tutorial_3">Even Screen is Off</string>
+    <string name="tutorial_3_0">Use Glow Screen feature to get notified even screen is off</string>
     <string name="tutorial_done">Done!</string>
     <string name="size">Size of Glow :</string>
 
