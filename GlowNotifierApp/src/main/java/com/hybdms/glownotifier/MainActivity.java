@@ -47,6 +47,7 @@ public class MainActivity extends ActionBarActivity {
         SeekBar sizesekkbar = (SeekBar)findViewById(R.id.sizeseekbar);
         Spinner shapentry = (Spinner) findViewById(R.id.shapentry); //heightentry spinner
         EditText glowdelay = (EditText) findViewById(R.id.delaytime); //delaytime Edittext
+        final TextView showsize = (TextView) findViewById(R.id.showsize);
         int posentry_int = pref.getInt("posentry",0);
         int sizesekkbar_int = pref.getInt("ratiovalue", 50);
         int shapentry_int = pref.getInt("shapentry", 0);
@@ -56,6 +57,7 @@ public class MainActivity extends ActionBarActivity {
         sizesekkbar.setProgress(sizesekkbar_int);
         shapentry.setSelection(shapentry_int);
         glowdelay.setText(delaytime_String);
+        showsize.setText(String.valueOf(sizesekkbar_int) + "%");
 
         //Launch Tutorial Activity If user new to this app
         Boolean firstrun = pref.getBoolean("firstrun", true);
@@ -119,6 +121,19 @@ public class MainActivity extends ActionBarActivity {
                 Intent glowscreen = new Intent(MainActivity.this, GlowScreenSettings.class);
                 startActivity(glowscreen);
             }
+        });
+
+        sizesekkbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                showsize.setText(String.valueOf(progress) + "%");
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {}
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {}
         });
 
     }

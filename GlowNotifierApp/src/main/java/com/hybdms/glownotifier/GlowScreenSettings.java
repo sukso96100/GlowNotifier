@@ -1,3 +1,20 @@
+/*
+ * GlowNotifier Application for Android
+ * Copyright (C) 2013 Youngbin Han<sukso96100@gmail.com>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 package com.hybdms.glownotifier;
 
 import android.app.Activity;
@@ -33,7 +50,7 @@ public class GlowScreenSettings extends ActionBarActivity {
         boolean closetoggle_boolean = pref.getBoolean("closeglowscreen_toggle", false);
         String delaytime_String = pref.getString("glowscreendelay", "30000");
         boolean screenoff_boolean = pref.getBoolean("autoscreenoff", false);
-        final boolean admin = pref.getBoolean("deviceadmin", true);
+        final boolean admin = pref.getBoolean("deviceadmin", false);
 
         toggle.setChecked(toggle_boolean);
         clockkinds.setSelection(clockkinds_int);
@@ -41,13 +58,14 @@ public class GlowScreenSettings extends ActionBarActivity {
         glowdelay.setText(delaytime_String);
         autoff.setChecked(screenoff_boolean);
 
+
         //Device Policy Manager
         final DevicePolicyManager mDPM =
                 (DevicePolicyManager)getSystemService(Context.DEVICE_POLICY_SERVICE);
 
         final ComponentName mAdminName = new ComponentName(this, DevicePolicyReceiver.class);
-        TextView admindesc = (TextView)findViewById(R.id.admindesc);
-        admindesc.setOnClickListener(new View.OnClickListener() {
+
+        autoff.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                     Intent intent = new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);

@@ -129,7 +129,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                     android:id="@+id/textView6"
                     android:padding="5dp"
                     android:layout_marginTop="10dp"/>
-
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="SIZEVALUE"
+                    android:id="@+id/showsize"
+                    android:padding="5dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/cardbg"/>
                 <SeekBar
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

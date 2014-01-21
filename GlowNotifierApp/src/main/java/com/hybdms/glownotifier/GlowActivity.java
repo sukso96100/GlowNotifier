@@ -1,3 +1,20 @@
+/*
+ * GlowNotifier Application for Android
+ * Copyright (C) 2013 Youngbin Han<sukso96100@gmail.com>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 package com.hybdms.glownotifier;
 
 import android.app.Activity;
@@ -49,6 +66,8 @@ public class GlowActivity extends Activity {
         int clockkinds_int = pref.getInt("clockkinds", 0);
         final boolean closetoggle_boolean = pref.getBoolean("closeglowscreen_toggle", true);
         int glowdelay_int = Integer.parseInt(pref.getString("delaytime", "30000"));
+        boolean screenoff_boolean = pref.getBoolean("autoscreenoff", true);
+        final boolean admin = pref.getBoolean("deviceadmin", true);
         //Load Color Value
         if(colormethod_int == 0){
             color_int = pref.getInt("colorvalue", Color.WHITE);
@@ -168,21 +187,15 @@ getIntent().getIntExtra("autocolorvalue", Color.WHITE);
             }
         });
 
-        if(glowdelay_int == 0){
-            //Do Nothing
-        }
-        else{
+
+        if(screenoff_boolean && admin){
+            if(glowdelay_int == 0){
+                //Do Nothing
+            }else{
             // Stop this Activity in a few seconds
             mTask = new TimerTask() {
                 @Override
                 public void run() {
-                    //Turn the Screen Off
-                    /*
-                    PowerManager.WakeLock wakeLock = pwm.newWakeLock
-                            (PowerManager.PARTIAL_WAKE_LOCK, "TAG");
-                    wakeLock.acquire();
-                    wakeLock.release();
-                    */
                     mDPM.lockNow();
                     if(closetoggle_boolean){
                         finish();
@@ -193,6 +206,10 @@ getIntent().getIntExtra("autocolorvalue", Color.WHITE);
             };
             mTimer = new Timer();
             mTimer.schedule(mTask, glowdelay_int);
+            }
+        }
+        else{
+            //Do Nothing
         }
     }
 }
