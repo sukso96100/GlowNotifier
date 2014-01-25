@@ -18,7 +18,6 @@
 package com.hybdms.glownotifier;
 
 import android.app.Activity;
-import android.app.KeyguardManager;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.admin.DevicePolicyManager;
@@ -31,8 +30,6 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.PowerManager;
-import android.os.SystemClock;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
