@@ -52,7 +52,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="tutorial_3_0">Use Glow Screen feature to get notified even screen is off</string>
     <string name="tutorial_done">Done!</string>
     <string name="size">Size of Glow :</string>
-
     <string name="shape">Shape of Glow :</string>
 
     <string-array name="shapentry">
@@ -88,10 +87,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="glowscreen_desc">If you turn this feature on,
         it will wake your device up from sleep and show you some information about the notification that just detected</string>
     <string name="glowscreen_clockkinds">Kinds of Clock for Glow Screen :</string>
+
     <string-array name="glowscreen_clockkinds_entry">
         <item>Digital Clock</item>
         <item>Analog Clock</item>
     </string-array>
+
     <string name="glowscreen_delay">Glow Screen Delay Time(Milliseconds)\n
     (0:Keep Screen On 30000(30sec):Default) :</string>
     <string name="glowscreen_close">Close Glow Screen Automatically When Turning Screen Off</string>
@@ -104,4 +105,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="deviceadmin_desc">Turn this on to turn off screen automatically after Glow Screen appeared\n
     If you are not using the feature or trying to uninstall GlowNotifier,
     You must turn this off at [Settings-Security-Device administrators] first</string>
+    <string name="title_activity_glow_activity_preview">GlowActivityPreview</string>
+
 </resources>

@@ -53,7 +53,7 @@ public class BitmapAverageColor {
         int averagePixelBlue = pixelSumBlue / 3000;
         int averagePixelGreen = pixelSumGreen / 3000;
 
-        int AverageColorCodeRGB = Color.rgb(averagePixelRed, averagePixelGreen, averagePixelBlue);
+        int AverageColorCodeRGB = Color.rgb(averagePixelRed + 3, averagePixelGreen + 3, averagePixelBlue + 3);
 
         return AverageColorCodeRGB;
     }

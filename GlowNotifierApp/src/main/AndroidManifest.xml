@@ -156,16 +156,28 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
         <receiver
             android:name="com.hybdms.glownotifier.DevicePolicyReceiver"
-            android:permission="android.permission.BIND_DEVICE_ADMIN"
+            android:description="@string/deviceadmin_desc"
             android:label="@string/deviceadmin_label"
-            android:description="@string/deviceadmin_desc">
-            <meta-data android:name="android.app.device_admin"
+            android:permission="android.permission.BIND_DEVICE_ADMIN" >
+            <meta-data
+                android:name="android.app.device_admin"
                 android:resource="@xml/deviceadmin_config" />
+
             <intent-filter>
                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
             </intent-filter>
         </receiver>
 
+        <activity
+            android:name="com.hybdms.glownotifier.GlowActivityPreview"
+            android:label="@string/title_activity_glow_activity_preview"
+            android:parentActivityName="com.hybdms.glownotifier.GlowScreenSettings"
+            android:theme="@style/Theme.Gray.FullScreen"
+            android:excludeFromRecents="true">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hybdms.glownotifier.GlowScreenSettings"/>
+        </activity>
     </application>
 
 </manifest>

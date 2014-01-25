@@ -25,9 +25,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -95,5 +99,41 @@ public class GlowScreenSettings extends ActionBarActivity {
         editor.putBoolean("closeglowscreen_toggle", closetoggle.isChecked());
         editor.putBoolean("autoscreenoff", autoff.isChecked());
         editor.commit(); // Save values
+    }
+
+    //ActionBar Action Menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu items for use in the action bar
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle presses on the action bar items
+        switch (item.getItemId()) {
+            case R.id.action_preview:
+                //Save Preference Value
+                SharedPreferences pref = getSharedPreferences("pref", Activity.MODE_PRIVATE); // Save UI State
+                SharedPreferences.Editor editor = pref.edit(); // Load Editor
+                CheckBox toggle = (CheckBox)findViewById(R.id.toggle);
+                Spinner clockkinds = (Spinner)findViewById(R.id.clockkindsentry);
+                EditText glowdelay = (EditText) findViewById(R.id.delaytime);
+                CheckBox closetoggle = (CheckBox)findViewById(R.id.closetoggle);
+                CheckBox autoff = (CheckBox)findViewById(R.id.screenoff);
+                // Input values
+                editor.putBoolean("glowscreen_toggle", toggle.isChecked());
+                editor.putInt("clockkinds", clockkinds.getSelectedItemPosition());
+                editor.putString("glowscreendelay", glowdelay.getText().toString());
+                editor.putBoolean("closeglowscreen_toggle", closetoggle.isChecked());
+                editor.putBoolean("autoscreenoff", autoff.isChecked());
+                editor.commit(); // Save values
+                startActivity(new Intent(this, GlowActivityPreview.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
