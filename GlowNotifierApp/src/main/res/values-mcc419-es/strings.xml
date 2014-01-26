@@ -54,7 +54,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </string-array>
     <string name="visit">Visita la página web de GlowNotifier</string>
     <string name="blog">Visita el Blog del desarrollador</string>
-    <string name="glow_delay">Duración del resplandor(Milisegundos predeterminados: 5000(5s)) :</string>
+    <string name="glow_delay">Duración del resplandor(Milisegundos/5000(5s):predeterminados) :</string>
     <string name="sysnotilistenerservice">GlowNotifier : Detector de notificación</string>
     <string name="title_activity_blacklist">Lista de notificaciones ignoradas</string>
     <string name="action_settings">Configuración</string>
@@ -73,7 +73,6 @@ Mantenga pulsado sobre la aplicación, para eliminarla de la lista de ignorados.
     <string name="pick_color_fixed">Seleccione el color fijo</string>
     <string name="translate">Ayuda a traducir esta aplicación.</string>
     <string name="title_activity_glow">GlowActivity</string>
-    <string name="dummy_content">\nContenido</string>
     <string name="title_activity_glow_screen_settings">Configuración de Glow Screen</string>
     <string name="glowscreen_toggle">Usar Glow Screen</string>
     <string name="glowscreen_desc">Si Ud activa esta función,
@@ -83,4 +82,16 @@ su dispositivo podria despertar del reposo y mostrar información sobre la notif
         <item>Reloj digital</item>
         <item>Reloj analógico</item>
     </string-array>
+    <string name="glowscreen_delay">Tiempo de espera Glow Screen(Milisegundos)\n
+ (0:Mantener encendida la pantalla, 30000(30s):predeterminado) :</string>
+    <string name="glowscreen_close">Cerrar automaticamente Glow Screen cuando se apague la pantalla</string>
+    <string name="deviceadmin_on">Administradores de dispositivo esta activado \n
+ Si no usa la caracteristica "apagado automatico de pantalla" de Glow Screen
+ o intenta desinstalar esta aplicación, desactive administradores de dispositivo.</string>
+    <string name="deviceadmin_off">Administradores de dispositivo esta desactivado</string>
+    <string name="glowscreen_autoscreenoff">Apagar la pantalla automaticamente</string>
+    <string name="deviceadmin_label">GlowNotifier : Apagar la pantalla automaticamente</string>
+    <string name="deviceadmin_desc">Active esto para apagar automaticamente la pantalla despues que Glow Screen se muestre\n
+ Si no usa esta caracteristica o intenta desinstalar GlowNotifier,
+ Desactivelo en (Configuración-Seguridad-Administradores de dispositivo)</string>
 </resources>
