@@ -106,6 +106,9 @@ private String DEBUGTAG = "SysNotiDetectService";
                         if(colormethod_int == 1){
                             i.putExtra("autocolorvalue", autocolor);
                         }
+                        else if(colormethod_int == 2){
+                            i.putExtra("pkgname", event.getPackageName());
+                        }
                         else{
                             //Do Nothing
                         }

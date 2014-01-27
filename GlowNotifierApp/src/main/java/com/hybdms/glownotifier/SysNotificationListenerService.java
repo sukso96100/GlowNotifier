@@ -96,6 +96,9 @@ public class SysNotificationListenerService extends NotificationListenerService 
                     if(colormethod_int == 1){
                         i.putExtra("autocolorvalue", autocolor);
                     }
+                    else if(colormethod_int == 2){
+                        i.putExtra("pkgname", sbn.getPackageName());
+                    }
                     else{
                         //Do Nothing
                     }

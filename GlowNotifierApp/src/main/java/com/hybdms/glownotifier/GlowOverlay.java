@@ -65,8 +65,13 @@ public class GlowOverlay extends Service {
         if(colormethod_int == 0){
             color_int = pref.getInt("colorvalue", Color.WHITE);
         }
-        else{
+        else if(colormethod_int == 1){
             color_int = intent.getIntExtra("autocolorvalue", Color.WHITE);
+        }
+        else{
+            SharedPreferences colorpref = getSharedPreferences("colorpref", Context.MODE_PRIVATE);
+            String color_key = "color" + intent.getStringExtra("pkgname");
+            color_int = colorpref.getInt(color_key, Color.WHITE);
         }
 
         //Get Device Screen Width Value

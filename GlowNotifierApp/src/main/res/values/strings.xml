@@ -77,6 +77,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string-array name="color_method_entry">
         <item>Fixed Color</item>
         <item>Auto Color Picking</item>
+        <item>Color Per App</item>
     </string-array>
 
     <string name="pick_color_fixed">Pick Fixed Color</string>
@@ -106,5 +107,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     If you are not using the feature or trying to uninstall GlowNotifier,
     You must turn this off at [Settings-Security-Device administrators] first</string>
     <string name="title_activity_glow_activity_preview">GlowActivityPreview</string>
+    <string name="title_activity_color_per_app_list">Colors Per App Settings</string>
 
 </resources>

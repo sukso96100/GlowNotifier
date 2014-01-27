@@ -27,7 +27,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
 
     <application
         android:allowBackup="true"
@@ -170,13 +169,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
         <activity
             android:name="com.hybdms.glownotifier.GlowActivityPreview"
+            android:excludeFromRecents="true"
             android:label="@string/title_activity_glow_activity_preview"
             android:parentActivityName="com.hybdms.glownotifier.GlowScreenSettings"
-            android:theme="@style/Theme.Gray.FullScreen"
-            android:excludeFromRecents="true">
+            android:theme="@style/Theme.Gray.FullScreen" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.hybdms.glownotifier.GlowScreenSettings"/>
+                android:value="com.hybdms.glownotifier.GlowScreenSettings" />
+        </activity>
+        <activity
+            android:name="com.hybdms.glownotifier.ColorPerAppList"
+            android:label="@string/title_activity_color_per_app_list"
+            android:parentActivityName="com.hybdms.glownotifier.ColorSettings" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.hybdms.glownotifier.ColorSettings" />
         </activity>
     </application>
 

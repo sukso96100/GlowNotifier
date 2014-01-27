@@ -18,6 +18,7 @@
 package com.hybdms.glownotifier;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
@@ -44,6 +45,14 @@ public class ColorSettings extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 showColorPickerDialog();
+            }
+        });
+
+        TextView colorperapp = (TextView)findViewById(R.id.color_per_app);
+        colorperapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ColorSettings.this, ColorPerAppList.class));
             }
         });
     }

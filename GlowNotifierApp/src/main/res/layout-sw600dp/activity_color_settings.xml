@@ -60,6 +60,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
                 android:background="@drawable/cardbg"
                 android:padding="10dp"
                 android:layout_marginTop="10dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/title_activity_color_per_app_list"
+                android:id="@+id/color_per_app"
+                android:background="@drawable/cardbg"
+                android:padding="10dp"
+                android:layout_marginTop="10dp"/>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
