@@ -35,11 +35,15 @@ import android.view.accessibility.AccessibilityEvent;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class SysNotiDetectService extends AccessibilityService {
 private String DEBUGTAG = "SysNotiDetectService";
     private BlacklistDBhelper mHelper = null;
     private Cursor mCursor = null;
+    private TimerTask mTask;
+    private Timer mTimer;
 
     @Override
     public void onAccessibilityEvent(AccessibilityEvent event) {
@@ -48,6 +52,8 @@ private String DEBUGTAG = "SysNotiDetectService";
         SharedPreferences pref = getSharedPreferences("pref", Context.MODE_PRIVATE);
         int colormethod_int = pref.getInt("colormethodentry", 0);
         boolean glowscreen_toggle = pref.getBoolean("glowscreen_toggle", true);
+        int glowblink_int = Integer.parseInt(pref.getString("blinktime", "1"));
+        final int glowdelay_int = Integer.parseInt(pref.getString("delaytime", "5000"));
 
         // Load BlackList
         mHelper = new BlacklistDBhelper(this);
@@ -70,9 +76,7 @@ private String DEBUGTAG = "SysNotiDetectService";
 
             //Stop GlowOverlay first
             stopService(new Intent(this, GlowOverlay.class));
-
             String pkgnameforfilter = event.getPackageName().toString();
-
             //Filter Toast Out
             Parcelable parcelable = event.getParcelableData();
             if (parcelable instanceof Notification) {
@@ -98,21 +102,30 @@ private String DEBUGTAG = "SysNotiDetectService";
 
                     if(isScreenOn){
                         //If the Screen is On
-                        //Stop GlowOverlay first
-                        stopService(new Intent(this, GlowOverlay.class));
-                        //Show GlowOverlay
-                        Log.d(DEBUGTAG, "Starting GlowOverlay");
-                        Intent i = new Intent(SysNotiDetectService.this, GlowOverlay.class);
-                        if(colormethod_int == 1){
-                            i.putExtra("autocolorvalue", autocolor);
+                        //Blink Glow 't' times
+                        for(int t=1; t<glowblink_int; t++){
+                            //Stop GlowOverlay first
+                            stopService(new Intent(this, GlowOverlay.class));
+                            //Show GlowOverlay
+                            Log.d(DEBUGTAG, "Starting GlowOverlay");
+                            Intent i = new Intent(SysNotiDetectService.this, GlowOverlay.class);
+                            if(colormethod_int == 1){
+                                i.putExtra("autocolorvalue", autocolor);
+                            }
+                            else if(colormethod_int == 2){
+                                i.putExtra("pkgname", event.getPackageName());
+                            }
+                            else{
+                                //Do Nothing
+                            }
+                            startService(i);
+
+                            try {
+                                Thread.sleep(glowdelay_int + glowdelay_int/4);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
                         }
-                        else if(colormethod_int == 2){
-                            i.putExtra("pkgname", event.getPackageName());
-                        }
-                        else{
-                            //Do Nothing
-                        }
-                        startService(i);
                     }
                     else{
                         if(glowscreen_toggle){
@@ -147,8 +160,6 @@ private String DEBUGTAG = "SysNotiDetectService";
         }
     }
 
-
-
     @Override
     protected void onServiceConnected() {
         System.out.println("onServiceConnected");
@@ -163,6 +174,4 @@ private String DEBUGTAG = "SysNotiDetectService";
     public void onInterrupt() {
         System.out.println("onInterrupt");
     }
-
-
 }

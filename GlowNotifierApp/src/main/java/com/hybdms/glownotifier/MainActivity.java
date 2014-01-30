@@ -47,16 +47,19 @@ public class MainActivity extends ActionBarActivity {
         SeekBar sizesekkbar = (SeekBar)findViewById(R.id.sizeseekbar);
         Spinner shapentry = (Spinner) findViewById(R.id.shapentry); //heightentry spinner
         EditText glowdelay = (EditText) findViewById(R.id.delaytime); //delaytime Edittext
+        EditText glowblink = (EditText) findViewById(R.id.blinktime); //blinktime Edittext
         final TextView showsize = (TextView) findViewById(R.id.showsize);
         int posentry_int = pref.getInt("posentry",0);
         int sizesekkbar_int = pref.getInt("ratiovalue", 50);
         int shapentry_int = pref.getInt("shapentry", 0);
         String delaytime_String = pref.getString("delaytime", "5000");
+        String blinktime_String = pref.getString("blinktime", "1");
 
         posentry.setSelection(posentry_int);
         sizesekkbar.setProgress(sizesekkbar_int);
         shapentry.setSelection(shapentry_int);
         glowdelay.setText(delaytime_String);
+        glowblink.setText(blinktime_String);
         showsize.setText(String.valueOf(sizesekkbar_int) + "%");
 
         //Launch Tutorial Activity If user new to this app
@@ -148,16 +151,19 @@ public class MainActivity extends ActionBarActivity {
         SeekBar sizeseekbar = (SeekBar) findViewById(R.id.sizeseekbar);
         Spinner shapentry = (Spinner) findViewById(R.id.shapentry);
         EditText glowdelay = (EditText) findViewById(R.id.delaytime);
+        EditText glowblink = (EditText) findViewById(R.id.blinktime);
         // Input values
         int posentry_selected_value = posentry.getSelectedItemPosition();
         int sizeseekbar_progress_value = sizeseekbar.getProgress();
         int shapentry_selected_value = shapentry.getSelectedItemPosition();
         String delaytime_edited_value = glowdelay.getText().toString();
+        String blinktime_edited_value = glowblink.getText().toString();
 
         editor.putInt("posentry", posentry_selected_value);
         editor.putInt("ratiovalue", sizeseekbar_progress_value);
         editor.putInt("shapentry", shapentry_selected_value);
         editor.putString("delaytime", delaytime_edited_value);
+        editor.putString("blinktime", blinktime_edited_value);
         editor.commit(); // Save values
     }
 
@@ -184,16 +190,19 @@ public class MainActivity extends ActionBarActivity {
                 SeekBar sizeseekbar = (SeekBar) findViewById(R.id.sizeseekbar);
                 Spinner shapentry = (Spinner) findViewById(R.id.shapentry);
                 EditText glowdelay = (EditText) findViewById(R.id.delaytime);
+                EditText glowblink = (EditText) findViewById(R.id.blinktime);
                 // Input values
                 int posentry_selected_value = posentry.getSelectedItemPosition();
                 int sizeseekbar_progress_value = sizeseekbar.getProgress();
                 int shapentry_selected_value = shapentry.getSelectedItemPosition();
                 String delaytime_edited_value = glowdelay.getText().toString();
+                String blinktime_edited_value = glowblink.getText().toString();
 
                 editor.putInt("posentry", posentry_selected_value);
                 editor.putInt("ratiovalue", sizeseekbar_progress_value);
                 editor.putInt("shapentry", shapentry_selected_value);
                 editor.putString("delaytime", delaytime_edited_value);
+                editor.putString("blinktime", blinktime_edited_value);
                 editor.commit(); // Save values
                 //Show GlowOverlay
                 startService(new Intent(this, GlowOverlay.class));

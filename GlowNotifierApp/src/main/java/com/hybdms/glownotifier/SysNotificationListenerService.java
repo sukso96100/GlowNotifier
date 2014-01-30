@@ -31,7 +31,6 @@ import android.os.PowerManager;
 import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
 import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +41,6 @@ public class SysNotificationListenerService extends NotificationListenerService 
     private BlacklistDBhelper mHelper = null;
     private Cursor mCursor = null;
 
-
     //When new notification posted on status ber
     @Override
     public void onNotificationPosted(StatusBarNotification sbn) {
@@ -50,6 +48,8 @@ public class SysNotificationListenerService extends NotificationListenerService 
         SharedPreferences pref = getSharedPreferences("pref", Context.MODE_PRIVATE);
         int colormethod_int = pref.getInt("colormethodentry", 0);
         boolean glowscreen_toggle = pref.getBoolean("glowscreen_toggle", true);
+        int glowblink_int = Integer.parseInt(pref.getString("blinktime", "1"));
+        final int glowdelay_int = Integer.parseInt(pref.getString("delaytime", "5000"));
 
         // Load BlackList
         mHelper = new BlacklistDBhelper(this);
@@ -88,21 +88,31 @@ public class SysNotificationListenerService extends NotificationListenerService 
                 int autocolor = BitmapAverageColor.getAverageColorCodeRGB(appicon);
 
                 if(isScreenOn){
-                    //Stop GlowOverlay first
-                    stopService(new Intent(this, GlowOverlay.class));
-                    //Show GlowOverlay
-                    Log.d(DEBUGTAG, "Starting GlowOverlay");
-                    Intent i = new Intent(SysNotificationListenerService.this, GlowOverlay.class);
-                    if(colormethod_int == 1){
-                        i.putExtra("autocolorvalue", autocolor);
+                    //If the Screen is On
+                    //Blink Glow 't' times
+
+                    for(int t=1; t<glowblink_int; t++){
+                        //Stop GlowOverlay first
+                        stopService(new Intent(this, GlowOverlay.class));
+                        //Show GlowOverlay
+                        Log.d(DEBUGTAG, "Starting GlowOverlay");
+                        Intent i = new Intent(SysNotificationListenerService.this, GlowOverlay.class);
+                        if(colormethod_int == 1){
+                            i.putExtra("autocolorvalue", autocolor);
+                        }
+                        else if(colormethod_int == 2){
+                            i.putExtra("pkgname", sbn.getPackageName());
+                        }
+                        else{
+                            //Do Nothing
+                        }
+                        startService(i);
+                        try {
+                            Thread.sleep(glowdelay_int + glowdelay_int/4);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
-                    else if(colormethod_int == 2){
-                        i.putExtra("pkgname", sbn.getPackageName());
-                    }
-                    else{
-                        //Do Nothing
-                    }
-                    startService(i);
                 }
                 else{
                     if(glowscreen_toggle){
@@ -148,5 +158,4 @@ public class SysNotificationListenerService extends NotificationListenerService 
         return super.onBind(intent);
     }
 */
-
 }

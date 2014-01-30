@@ -108,5 +108,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     You must turn this off at [Settings-Security-Device administrators] first</string>
     <string name="title_activity_glow_activity_preview">GlowActivityPreview</string>
     <string name="title_activity_color_per_app_list">Colors Per App Settings</string>
-
-</resources>
+    <string name="glow_blink">The number of iterations of Glow Blink(default : 1) :</string>
+    </resources>

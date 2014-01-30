@@ -175,6 +175,4 @@ public class GlowOverlay extends Service {
         }
         super.onDestroy();
     }
-
-
 }
