@@ -45,6 +45,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="tutorial_1_1">Active el servicio</string>
     <string name="tutorial_2">Personalización</string>
     <string name="tutorial_2_0">Puede personalizar el color, la posición, tamaño del resplandor.</string>
+    <string name="tutorial_3">Aun si la pantalla esta apagada</string>
+    <string name="tutorial_3_0">Usar Glow Screen para las notificaciones aun si la pantalla esta apagada</string>
     <string name="tutorial_done">¡Listo!</string>
     <string name="size">Tamaño del resplandor:</string>
     <string name="shape">Forma del resplandor :</string>
@@ -61,14 +63,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="title_activity_blacklist__addnew">Añadir</string>
     <string name="db_alreayexist">Ya esta en la lista de ignoradas.</string>
     <string name="db_removed">Eliminado de la lista de ignorados</string>
-    <string name="blacklist_info">No se mostrará resplandor para 
-las notificaciones de las aplicaciones ignoradas 
+    <string name="blacklist_info">No se mostrará resplandor para  \n
+ las notificaciones de las aplicaciones ignoradas  \n
 Mantenga pulsado sobre la aplicación, para eliminarla de la lista de ignorados.</string>
     <string name="title_activity_color_settings">Configurar el color del resplandor</string>
     <string name="color_method">Método de selección del color :</string>
     <string-array name="color_method_entry">
         <item>Color fijo</item>
         <item>Selección de color automatica</item>
+        <item>Color por aplicación</item>
     </string-array>
     <string name="pick_color_fixed">Seleccione el color fijo</string>
     <string name="translate">Ayuda a traducir esta aplicación.</string>
@@ -94,4 +97,7 @@ su dispositivo podria despertar del reposo y mostrar información sobre la notif
     <string name="deviceadmin_desc">Active esto para apagar automaticamente la pantalla despues que Glow Screen se muestre\n
  Si no usa esta caracteristica o intenta desinstalar GlowNotifier,
  Desactivelo en (Configuración-Seguridad-Administradores de dispositivo)</string>
+    <string name="title_activity_glow_activity_preview">Previsualizar GlowActivity</string>
+    <string name="title_activity_color_per_app_list">Configuraciones de color por aplicación</string>
+    <string name="glow_blink">Número de repeticiones de parpadeo del resplandor(predeterminado : 1) :</string>
 </resources>
