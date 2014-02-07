@@ -105,4 +105,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     화면을 자동으로 끄는 기능을 사용하지 않거나 앱을 제거하는 경우, 이 기기 관리자를 [설정-보안-기기 관리자]에서 먼저 끄세요.</string>
     <string name="title_activity_color_per_app_list">앱 별 색상 설정</string>
     <string name="glow_blink">알림빛 깜빡임 횟수(기본값 : 1) :</string>
+    <string name="devadmin_error">화면을 자동으로 끄는 기능이 작동하려면,\n
+                                    기기 관리자가 켜져 있어야 합니다.\n
+                                    기기 관리자기 켜져있는지 확인하세요.</string>
 </resources>

@@ -109,4 +109,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="title_activity_glow_activity_preview">GlowActivityPreview</string>
     <string name="title_activity_color_per_app_list">Colors Per App Settings</string>
     <string name="glow_blink">The number of iterations of Glow Blink(default : 1) :</string>
+    <string name="devadmin_error">In order to Turn Screen off Automatically,\n
+                                    You must turn on the Device Administrator\n
+                                    Please Check it first.</string>
     </resources>

@@ -36,6 +36,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -200,7 +201,13 @@ getIntent().getIntExtra("autocolorvalue", Color.WHITE);
             mTask = new TimerTask() {
                 @Override
                 public void run() {
+                    try{
                     mDPM.lockNow();
+                    }
+                    catch(Exception e){
+                        Toast.makeText(getApplicationContext(), getString(R.string.devadmin_error) + "\n" + e.toString(),
+                                Toast.LENGTH_LONG).show();
+                    }
                     if(closetoggle_boolean){
                         finish();
                     }else{
