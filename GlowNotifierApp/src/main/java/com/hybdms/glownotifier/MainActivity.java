@@ -228,6 +228,5 @@ public class MainActivity extends ActionBarActivity {
 
         });
         colorPickerDialog.show();
-
     }
 }

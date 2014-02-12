@@ -102,30 +102,21 @@ private String DEBUGTAG = "SysNotiDetectService";
 
                     if(isScreenOn){
                         //If the Screen is On
-                        //Blink Glow 't' times
-                        for(int t=1; t<glowblink_int; t++){
-                            //Stop GlowOverlay first
-                            stopService(new Intent(this, GlowOverlay.class));
-                            //Show GlowOverlay
-                            Log.d(DEBUGTAG, "Starting GlowOverlay");
-                            Intent i = new Intent(SysNotiDetectService.this, GlowOverlay.class);
-                            if(colormethod_int == 1){
-                                i.putExtra("autocolorvalue", autocolor);
-                            }
-                            else if(colormethod_int == 2){
-                                i.putExtra("pkgname", event.getPackageName());
-                            }
-                            else{
-                                //Do Nothing
-                            }
-                            startService(i);
-
-                            try {
-                                Thread.sleep(glowdelay_int + glowdelay_int/4);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
+                        //Stop GlowOverlay first
+                        stopService(new Intent(this, GlowOverlay.class));
+                        //Show GlowOverlay
+                        Log.d(DEBUGTAG, "Starting GlowOverlay");
+                        Intent i = new Intent(SysNotiDetectService.this, GlowOverlay.class);
+                        if(colormethod_int == 1){
+                            i.putExtra("autocolorvalue", autocolor);
                         }
+                        else if(colormethod_int == 2){
+                            i.putExtra("pkgname", event.getPackageName());
+                        }
+                        else{
+                            //Do Nothing
+                        }
+                        startService(i);
                     }
                     else{
                         if(glowscreen_toggle){
@@ -134,6 +125,7 @@ private String DEBUGTAG = "SysNotiDetectService";
                         PowerManager.WakeLock wakeLock = pwm.newWakeLock
                                 ((PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP), "TAG");
                         wakeLock.acquire();
+                        wakeLock.release();
                         //Show GlowActivity
                         Log.d(DEBUGTAG, "Starting GlowActivity");
                         Intent a = new Intent(SysNotiDetectService.this, GlowActivity.class);

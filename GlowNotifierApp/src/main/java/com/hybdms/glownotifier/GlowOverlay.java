@@ -24,10 +24,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Handler;
 import android.os.IBinder;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.graphics.PixelFormat;
@@ -56,7 +58,9 @@ public class GlowOverlay extends Service {
         //Load Preference Value
         SharedPreferences pref = getSharedPreferences("pref", Context.MODE_PRIVATE);
 
-        int posentry_int = pref.getInt("posentry",0);
+        int glowblink_int = Integer.parseInt(pref.getString("blinktime", "1"));
+        int glowdelay_int = Integer.parseInt(pref.getString("delaytime", "5000"));
+        int posentry_int = pref.getInt("posentry", 0);
         int ratio_int = pref.getInt("ratiovalue", 50);
         int shape_int = pref.getInt("shapentry", 0);
         int colormethod_int = pref.getInt("colormethodentry", 0);
@@ -142,13 +146,36 @@ public class GlowOverlay extends Service {
         mWindowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         mWindowManager.addView(mGlowOverlay, mParams);
 
+        Log.d(DEBUGTAG, "Blink Loop Start");
+        //Blink Glow "t" times
+        int t=0;
+        while(t<glowblink_int*2){
+
+            mTask = new TimerTask() {
+                @Override
+                public void run() {
+                    if(mGlowOverlay.getVisibility() == View.VISIBLE){
+                        Log.d(DEBUGTAG, "INVISIBLE");
+                        mGlowOverlay.setVisibility(View.INVISIBLE);
+                    }else{
+                        Log.d(DEBUGTAG, "VISIBLE");
+                        mGlowOverlay.setVisibility(View.VISIBLE);
+                    }
+                }
+            };
+            mTimer = new Timer();
+            mTimer.schedule(mTask, glowdelay_int);
+            t++;
+        }
+        Log.d(DEBUGTAG, "Blink Loop End");
+        stopSelf();
         return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
-
+        /*
         SharedPreferences pref = getSharedPreferences("pref", Context.MODE_PRIVATE);
         int glowdelay_int = Integer.parseInt(pref.getString("delaytime", "5000"));
         // Stop this Service in a few seconds
@@ -165,6 +192,7 @@ public class GlowOverlay extends Service {
         if(mWindowManager != null) {
             if(mGlowOverlay != null) mWindowManager.removeView(mGlowOverlay);
         }
+        */
     }
 
     @Override
@@ -173,6 +201,7 @@ public class GlowOverlay extends Service {
         if(mWindowManager != null) {
             if(mGlowOverlay != null) mWindowManager.removeView(mGlowOverlay);
         }
+        Log.d(DEBUGTAG, "Service Destroyed");
         super.onDestroy();
     }
 }

@@ -167,12 +167,6 @@ getIntent().getIntExtra("autocolorvalue", Color.WHITE);
         appiconfield.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //disable keyguard
-                /*
-                KeyguardManager km = (KeyguardManager)getSystemService(KEYGUARD_SERVICE);
-                KeyguardManager.KeyguardLock keylock = km.newKeyguardLock(KEYGUARD_SERVICE);
-                keylock.disableKeyguard();
-                */
                 try {
                     //launch notification event
                     n.contentIntent.send();
