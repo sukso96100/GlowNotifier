@@ -26,11 +26,14 @@ import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.Message;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.graphics.PixelFormat;
 
@@ -41,25 +44,34 @@ public class GlowOverlay extends Service {
     private ImageView mGlowOverlay;
     private WindowManager.LayoutParams mParams;
     private WindowManager mWindowManager;
+    private String DEBUGTAG = "GlowOverlay";
     private TimerTask mTask;
     private Timer mTimer;
-    private String DEBUGTAG = "GlowOverlay";
+
+
 
     @Override
     public IBinder onBind(Intent arg0) { return null; }
 
     @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
+    public int onStartCommand(final Intent intent, final int flags, final int startId) {
         Log.d(DEBUGTAG, "Service Started");
 
         //Create Image View
         mGlowOverlay = new ImageView(this);
 
+        mGlowOverlay.setVisibility(View.VISIBLE);
+        Animation anim = new AlphaAnimation(0.0f, 1.0f);
+        anim.setDuration(50); //You can manage the time of the blink with this parameter
+        anim.setStartOffset(20);
+        anim.setRepeatMode(Animation.REVERSE);
+        anim.setRepeatCount(Animation.INFINITE);
+
         //Load Preference Value
         SharedPreferences pref = getSharedPreferences("pref", Context.MODE_PRIVATE);
 
-        int glowblink_int = Integer.parseInt(pref.getString("blinktime", "1"));
-        int glowdelay_int = Integer.parseInt(pref.getString("delaytime", "5000"));
+        final int glowblink_int = Integer.parseInt(pref.getString("blinktime", "1"));
+        final int glowdelay_int = Integer.parseInt(pref.getString("delaytime", "5000"));
         int posentry_int = pref.getInt("posentry", 0);
         int ratio_int = pref.getInt("ratiovalue", 50);
         int shape_int = pref.getInt("shapentry", 0);
@@ -146,38 +158,9 @@ public class GlowOverlay extends Service {
         mWindowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
         mWindowManager.addView(mGlowOverlay, mParams);
 
-        Log.d(DEBUGTAG, "Blink Loop Start");
-        //Blink Glow "t" times
-        int t=0;
-        while(t<glowblink_int*2){
 
-            mTask = new TimerTask() {
-                @Override
-                public void run() {
-                    if(mGlowOverlay.getVisibility() == View.VISIBLE){
-                        Log.d(DEBUGTAG, "INVISIBLE");
-                        mGlowOverlay.setVisibility(View.INVISIBLE);
-                    }else{
-                        Log.d(DEBUGTAG, "VISIBLE");
-                        mGlowOverlay.setVisibility(View.VISIBLE);
-                    }
-                }
-            };
-            mTimer = new Timer();
-            mTimer.schedule(mTask, glowdelay_int);
-            t++;
-        }
-        Log.d(DEBUGTAG, "Blink Loop End");
-        stopSelf();
-        return super.onStartCommand(intent, flags, startId);
-    }
+        mGlowOverlay.startAnimation(anim);
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        /*
-        SharedPreferences pref = getSharedPreferences("pref", Context.MODE_PRIVATE);
-        int glowdelay_int = Integer.parseInt(pref.getString("delaytime", "5000"));
         // Stop this Service in a few seconds
         mTask = new TimerTask() {
             @Override
@@ -187,12 +170,23 @@ public class GlowOverlay extends Service {
         };
         mTimer = new Timer();
         mTimer.schedule(mTask, glowdelay_int);
-
+        /*
         //Remove the View
         if(mWindowManager != null) {
             if(mGlowOverlay != null) mWindowManager.removeView(mGlowOverlay);
         }
         */
+        return super.onStartCommand(intent, flags, startId);
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+      //  SharedPreferences pref = getSharedPreferences("pref", Context.MODE_PRIVATE);
+      //  int glowdelay_int = Integer.parseInt(pref.getString("delaytime", "5000"));
+
+
     }
 
     @Override
@@ -205,3 +199,12 @@ public class GlowOverlay extends Service {
         super.onDestroy();
     }
 }
+
+/*
+* if (mGlowOverlay.getVisibility() == View.VISIBLE) {
+                        Log.d(DEBUGTAG, "INVISIBLE");
+                        mGlowOverlay.setVisibility(View.INVISIBLE);
+                    } else {
+                        Log.d(DEBUGTAG, "VISIBLE");
+                        mGlowOverlay.setVisibility(View.VISIBLE);
+                    }*/
