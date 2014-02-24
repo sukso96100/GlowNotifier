@@ -100,4 +100,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     <string name="title_activity_glow_activity_preview">Vista previa de GlowActivity</string>
     <string name="title_activity_color_per_app_list">Configuraciones de color por aplicación</string>
     <string name="glow_blink">Número de repeticiones de parpadeo del resplandor( predeterminado : 1) :</string>
+    <string name="devadmin_error">Para apagar la pantalla automaticamente,\n
+ Debe activar el administrador de dispositivo\n
+ Primero compruebelo.</string>
 </resources>

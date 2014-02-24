@@ -45,8 +45,8 @@ public class SysNotificationListenerService extends NotificationListenerService 
     public void onNotificationRemoved(StatusBarNotification sbn) {
         Log.d(DEBUGTAG, "+++++++++++++++++++++++++++++++++++++++++++++++");
         Log.d(DEBUGTAG, "onNotificationRemoved");
-        Log.d(DEBUGTAG, "onNotificationRemoved : Kill GlowBlinker");
-        stopService(new Intent(this, GlowBlinker.class));
+        Log.d(DEBUGTAG, "onNotificationRemoved : Kill GlowOverlay");
+        stopService(new Intent(this, GlowOverlay.class));
 
     }
 

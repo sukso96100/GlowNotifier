@@ -100,4 +100,7 @@ su dispositivo podria despertar del reposo y mostrar información sobre la notif
     <string name="title_activity_glow_activity_preview">Previsualizar GlowActivity</string>
     <string name="title_activity_color_per_app_list">Configuraciones de color por aplicación</string>
     <string name="glow_blink">Número de repeticiones de parpadeo del resplandor(predeterminado : 1) :</string>
+    <string name="devadmin_error">Para apagar la pantalla automaticamente,\n
+ Debe activar el administrador de dispositivo\n
+Verifiquelo primeramente.</string>
 </resources>

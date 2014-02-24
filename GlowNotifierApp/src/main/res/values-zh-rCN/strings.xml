@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <!--
+GlowNotifier Application for Android
+Copyright (C) 2013 Youngbin Han<sukso96100@gmail.com>
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<resources>
+    <string name="app_name">霓虹通知</string>
+    <string name="hello_world">你好世界！</string>
+    <string name="service_and_info">服务开关和应用信息</string>
+    <string name="accessibility">通知探测服务设置</string>
+    <string name="app_settings">应用设置</string>
+    <string name="pos">发光位置</string>
+    <string-array name="posentry">
+        <item>顶部</item>
+        <item>底部</item>
+    </string-array>
+</resources>
