@@ -30,6 +30,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -46,6 +47,7 @@ public class GlowActivity extends Activity {
     String DEBUGTAG = "GlowActivity";
     private TimerTask mTask;
     private Timer mTimer;
+    Handler handler = new Handler();
 
 
     @Override
@@ -199,8 +201,14 @@ getIntent().getIntExtra("autocolorvalue", Color.WHITE);
                     mDPM.lockNow();
                     }
                     catch(Exception e){
-                        Toast.makeText(getApplicationContext(), getString(R.string.devadmin_error) + "\n" + e.toString(),
-                                Toast.LENGTH_LONG).show();
+
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getApplicationContext(), getString(R.string.devadmin_error),
+                                        Toast.LENGTH_LONG).show();
+                            }
+                        });
                     }
                     if(closetoggle_boolean){
                         finish();
