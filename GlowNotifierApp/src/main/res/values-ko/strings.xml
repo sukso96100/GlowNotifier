@@ -93,8 +93,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <item>아날로그 시계</item>
     </string-array>
     <string name="glowscreen_delay">알림빛화면 지속시간(밀리초)\n
-    (0:화면 그대로 켜놓기 30000(30초):기본값) :</string>
-    <string name="glowscreen_close">화면이 꺼질떄, 알림빛화면 자동으로 닫기</string>
+    (ㄸ30000(30초):기본값) :</string>
+    <string name="glowscreen_close">화면이 꺼질, 알림빛화면 자동으로 닫기</string>
     <string name="deviceadmin_on">기기 관리자가 켜졌습니다.\n
     알림빛 화면이 켜지고 일정시간후 화면을 자동으로 끄는 기능을 사용하지 않거나,
     앱을 제거할떄, 기기 관리자를 반드시 먼저 끄세요.</string>

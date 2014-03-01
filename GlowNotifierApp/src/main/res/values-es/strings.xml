@@ -86,7 +86,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <item>Reloj analógico</item>
     </string-array>
     <string name="glowscreen_delay">Tiempo de espera Glow Screen(Milisegundos) \n
- (0:Mantener encendida la pantalla, 30000(30s):predeterminado) :</string>
+ (30000(30s):predeterminado) :</string>
     <string name="glowscreen_close">Cerrar automaticamente Glow Screen cuando se apague la pantalla</string>
     <string name="deviceadmin_on">Administradores de dispositivo esta activado \n
  Si no usa la caracteristica "apagado automatico de pantalla" de Glow Screen

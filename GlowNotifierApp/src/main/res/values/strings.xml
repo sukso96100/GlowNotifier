@@ -95,7 +95,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     </string-array>
 
     <string name="glowscreen_delay">Glow Screen Delay Time(Milliseconds)\n
-    (0:Keep Screen On 30000(30sec):Default) :</string>
+    (30000(30sec):Default) :</string>
     <string name="glowscreen_close">Close Glow Screen Automatically When Turning Screen Off</string>
     <string name="deviceadmin_on">Device Administration is On.\n
     If you are not using the feature "GlowNotifier : Glow Screen - Turn Off Screen Automatically"
